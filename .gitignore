@@ -1,0 +1,9 @@
+##########
+## DROMEDARIOS 
+##########
+
+**/assets
+**/vendor
+
+*.mwb.bak
+*.log

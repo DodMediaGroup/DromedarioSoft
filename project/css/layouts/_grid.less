@@ -1,0 +1,23 @@
+.inline-table,
+.form-inline.inline-table{
+	display: table;
+	width: 100%;
+	&>*{
+		display: table-cell;
+		padding-right: 3px;
+		&:last-child{
+			padding-right: 0px;
+		}
+	}
+	.form-control{
+		width: 100%;
+	}
+}
+
+.row__inline{
+	display: block;
+	&>[class^="col-"]{
+		display: inline-block;
+		float: none;
+	}
+}

@@ -1,0 +1,58 @@
+.reports__results{
+	display: none;
+	&.active{
+		display: block;
+	}
+	.preload-content{
+		background: url('@{path-images}/loading.gif') no-repeat center;
+		background-size: 32px 32px;
+		min-height: 100px;
+		&>*{
+			background-color: @color-white;
+		}
+	}
+
+	.widget .text-box h2{
+		font-size: 2.0em;
+	}
+
+	.charts__padding{
+		padding: 1px;
+	}
+	.reports__charts{
+		background-color: @color-white;
+		height: 300px;
+		overflow: hidden;
+		width: 100%;
+		&.highcharts{
+			height: 400px;
+			margin-top: @padding*2;
+		}
+	}
+
+	.widget__tables{
+		background-color: @color-white;
+		color: @color-primary;
+		padding: @padding;
+		table{
+			font-size: .85em;
+			width: 100%;
+			thead,
+			.thead{
+				th,
+				td{
+					background-color: lighten(@lightblue-1, 10%);
+					padding: @padding*.5;
+				}
+			}
+			tbody{
+				tr{
+					border-bottom: 1px dashed lighten(@lightblue-1, 10%);
+				}
+				td{
+					padding: 3px @padding*.5;
+				}
+			}
+		}
+	}
+}

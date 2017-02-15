@@ -1,0 +1,14 @@
+.modal__loading{
+	background: url('@{path-images}/loading.gif') no-repeat center;
+	background-color: fadeout(@color-white, 20%);
+	display: none;
+	height: 100%;
+	left: 0px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 99;
+	&.active{
+		display: block;
+	}
+}

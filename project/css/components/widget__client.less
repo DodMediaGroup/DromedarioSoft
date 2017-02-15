@@ -1,0 +1,32 @@
+.widget__client{
+	.show-info__load__client{
+		display: none;
+		text-align: center;
+		p{
+			margin-bottom: 0px;
+		}
+		&.active{
+			display: block;
+		}
+
+		&.error{
+			a{
+				color: @color-danger;
+				font-weight: 600;
+			}
+		}
+		&.success{
+			p{
+				color: @color-success;
+				font-size: 1.2em;
+				font-weight: 600;
+				line-height: 1em;
+			}
+			small{
+				color: @color-primary;
+				font-size: .8em;
+				font-weight: 400;
+			}
+		}
+	}
+}

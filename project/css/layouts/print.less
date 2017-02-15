@@ -1,0 +1,23 @@
+.print__content__page{
+	display: none;
+}
+.print({
+	@page {
+		margin: 0pt 5pt;
+		page-size: A4;
+		size: portrait;
+	}
+
+	body>*:not(.print__content__page){
+		display: none;
+	}
+
+	*{
+		color: @color-primary;
+	}
+	.print__content__page{
+		&.active{
+			display: block;
+		}
+	}
+});
