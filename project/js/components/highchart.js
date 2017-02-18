@@ -1,12 +1,12 @@
-var HIGHCHARTS__list = [];
+var HIGHCHARTS__list = {};
 
 jQuery(document).ready(function($) {
-	$("highchart").each(function(index, el) {
+	/*$("highchart").each(function(index, el) {
 		if(!$(this).is('[id]'))
 			$(this).attr('id', ('highchart__' + index));
 
 		$.createChar($(this));
-	});
+	});*/
 });
 
 $(function () {
@@ -52,7 +52,7 @@ $.createChar = function(highchart){
 			}
 		});
 	});
-}
+};
 
 
 $.createStockChart = function(highchart, series){
@@ -64,10 +64,10 @@ $.createStockChart = function(highchart, series){
             text: ((highchart.is('[title]') && highchart.attr('title') != '')?highchart.attr('title'):'')
         },
         tooltip: {
-            valueDecimals: 2,
+            valueDecimals: 2
         },
-        series: series,
-	}
+        series: series
+	};
 
 	if(highchart.is('[live]')){
 		chartOptions.rangeSelector = {
@@ -116,7 +116,7 @@ $.createStockChart = function(highchart, series){
             $.loadSincCharData(highchart, chart, series);
         }, 10000);
     }
-}
+};
 
 $.createColumnChart = function(highchart, options){
 	var chartOptions = options[0];

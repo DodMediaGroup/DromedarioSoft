@@ -11,7 +11,7 @@ return array(
 	'password' => '',
 	'charset' => 'utf8',
 
-	/*'connectionString' => 'mysql:host=localhost;dbname=dodmedia_bd_dromedario_hardware',
+	/*'connectionString' => 'mysql:host=152.200.234.189;dbname=dodmedia_bd_dromedario_hardware',
 	'emulatePrepare' => true,
 	'username' => 'dodmedia_sergio',
 	'password' => ')$f)@J&Iv[I&',

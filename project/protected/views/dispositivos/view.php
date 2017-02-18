@@ -11,6 +11,53 @@
 </div>
 
 <div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <h2><strong>Consumo Live</strong> de <?php echo $dispositivo->nombre; ?></h2>
+                <div class="additional-btn">
+                    <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                </div>
+            </div>
+            <div class="widget-content padding">
+                <highchart
+                        id="highchart-live"
+                        type="chart"
+                        data__url="<?php echo $this->createUrl('dispositivos/getConsumoLive/'.$dispositivo->id); ?>"
+                        data__filter="corriente_1, corriente_2, corriente_3"
+                >
+
+                </highchart>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <h2><strong>Tendencia de Consumo Live</strong> de <?php echo $dispositivo->nombre; ?></h2>
+                <div class="additional-btn">
+                    <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                </div>
+            </div>
+            <div class="widget-content padding">
+                <highchart
+                        id="highchart-live__moment"
+                        type="chart"
+                        data__url="<?php echo $this->createUrl('dispositivos/getConsumoLive/'.$dispositivo->id); ?>"
+                        data__filter="corriente_1, corriente_2, corriente_3"
+                        moment
+                >
+
+                </highchart>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="row">
 	<div class="col-md-12">
 		<div class="widget">
 			<div class="widget-header">
@@ -104,4 +151,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div>-->

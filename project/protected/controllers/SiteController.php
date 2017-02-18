@@ -60,7 +60,7 @@ class SiteController extends Controller
 
 
 	public function actionDeviceTest(){
-		/*$cant = 10;
+		$cant = 500;
 		while ($cant > 0) {
 			set_time_limit(20);
 
@@ -73,11 +73,11 @@ class SiteController extends Controller
 
 			$cant--;
 
-			sleep(rand(11,15));
-		}*/
+			sleep(rand(12,15));
+		}
 
 		//$segundos = 300;
-		$segundos = 3600*3;
+		/*$segundos = 3600*3;
 		while ($segundos > 0) {
 			set_time_limit(20);
 
@@ -90,7 +90,7 @@ class SiteController extends Controller
 			$registro->save();
 
 			$segundos = $segundos - rand(11,15);
-		}
+		}*/
 	}
 
 	/**

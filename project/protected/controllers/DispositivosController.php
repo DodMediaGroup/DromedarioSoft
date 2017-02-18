@@ -108,6 +108,9 @@ class DispositivosController extends Controller
 
 
 	public function actionView($id){
+        $load = Yii::app()->getClientScript();
+        $load->registerScriptFile(Yii::app()->request->baseUrl.'/js/modules/dispositivos.js',CClientScript::POS_END);
+
 		$dispositivo = $this->loadModel($id);
 		$persona = $dispositivo->usuario0->personases[0];
 
@@ -185,40 +188,34 @@ class DispositivosController extends Controller
 
 	public function actionGetConsumoLive(){
 		if(isset($_GET['id'])){
-			$id = $_GET['id'];
 			$dispositivo = $this->loadModel($_GET['id']);
 
-			$charSerie = array(
-				'name'=>$dispositivo->nombre,
-				'type'=>'spline',
-				'data'=>array(),
-				'marker'=>array(
-                    'enabled'=>true,
-                    'radius'=>3
-                ),
-			);
+			$charSerie = array();
+			$acomulado = [];
 
 			if(!isset($_GET['last'])){
-				$registros = MyMethods::querySql('SELECT corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND fecha > DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 60 MINUTE) ORDER BY fecha ASC');
+				$registros = MyMethods::querySql('SELECT id, corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND fecha > DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 10 MINUTE) ORDER BY fecha ASC');
 
 				if(count($registros) == 0){
 					$lastRegistro = Registros::model()->findByAttributes(array('dispositivo'=>$dispositivo->id), array('order'=>'t.fecha DESC', 'limit'=>1));
 					if($lastRegistro != null){
-						$registros = MyMethods::querySql('SELECT corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND fecha > DATE_SUB("'.$lastRegistro->fecha.'", INTERVAL 60 MINUTE) ORDER BY fecha ASC');
+						$registros = MyMethods::querySql('SELECT id, corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND fecha > DATE_SUB("'.$lastRegistro->fecha.'", INTERVAL 10 MINUTE) ORDER BY fecha ASC');
 					}
 				}
 			}
 			else{
-				$date = new DateTime();
-				$date->setTimestamp($_GET['last'] / 1000);
+				$registros = MyMethods::querySql('SELECT id, corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND UNIX_TIMESTAMP(fecha) > "'.($_GET['last'] / 1000).'"');
 
-				$registros = MyMethods::querySql('SELECT corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND UNIX_TIMESTAMP(fecha) > "'.($_GET['last'] / 1000).'"');
+				if(isset($_GET['moment'])){
+                    $acomulado = MyMethods::querySql('select count(*) as count, sum(corriente_1) as corriente_1, sum(corriente_2) as corriente_2, sum(corriente_3) as corriente_3 from ( SELECT corriente_1, corriente_2, corriente_3 FROM registros WHERE dispositivo = '.$dispositivo->id.' AND UNIX_TIMESTAMP(fecha) < '.($_GET['last'] / 1000).' ORDER BY fecha DESC LIMIT '.$_GET['moment'].') t;');
+                    $acomulado = $acomulado[0];
+                }
 			}
 
-			$response = $this->createDataResponse($charSerie, $registros);
-			/*foreach ($registros as $key => $registro) {
-				$response['data'][] = [($registro['fecha'] * 1000), floatval($registro['consumo'])];
-			}*/
+			if(isset($_GET['moment']))
+			    $response = $this->createDataMomentResponse($dispositivo, $charSerie, $registros, $acomulado);
+			else
+                $response = $this->createDataResponse($charSerie, $registros);
 
 			echo CJSON::encode($response);
 		}
@@ -334,25 +331,57 @@ class DispositivosController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 	}
 
+
 	private function createDataResponse($base, $registros){
 		$response = array();
 
-		for($i = 0; $i < $this->corrientesDevice; $i++){
-			$response[] = new ArrayObject($base);
-		}
-		foreach ($registros as $key => $registro) {
-			if(isset($_GET['filter'])){
-				$filters = explode(',', $_GET['filter']);
-				foreach ($filters as $key => $filter) {
-					$filter = trim($filter);
-					$response[$key]['name'] = ucwords($filter);
-					$response[$key]['data'][] = [($registro['fecha']*1000), floatval($registro[$filter])];
-				}
-			}
+        if(isset($_GET['filter'])){
+            $filters = explode(',', $_GET['filter']);
+
+            for($i = 0; $i < count($filters); $i++){
+                $response[] = new ArrayObject($base);
+            }
+
+            foreach ($registros as $key => $registro) {
+                foreach ($filters as $key => $filter) {
+                    $filter = trim($filter);
+                    $response[$key]['name'] = ucwords($filter);
+
+                    $point = array('x'=>($registro['fecha']*1000), 'y'=>floatval($registro[$filter]));
+                    $response[$key]['data'][] = $point;
+                }
+            }
 		}
 
 		return $response;
 	}
+	private function createDataMomentResponse($dispositivo, $base, $registros, $acomulado){
+        $response = array();
+
+        if(isset($_GET['filter'])){
+            $filters = explode(',', $_GET['filter']);
+
+            for($i = 0; $i < count($filters); $i++){
+                $response[] = new ArrayObject($base);
+            }
+
+            foreach ($registros as $key => $registro) {
+                $acomulado['count'] = (isset($acomulado['count']))?(intval($acomulado['count']) + 1):1;
+                foreach ($filters as $key => $filter) {
+                    $filter = trim($filter);
+                    $response[$key]['name'] = ucwords($filter);
+
+                    $acomulado[$filter] = (isset($acomulado[$filter]))?floatval($acomulado[$filter]) + floatval($registro[$filter]):floatval($registro[$filter]);
+                    $value = $acomulado[$filter] / $acomulado['count'];
+
+                    $point = array('x'=>($registro['fecha']*1000), 'y'=>$value);
+                    $response[$key]['data'][] = $point;
+                }
+            }
+        }
+
+        return $response;
+    }
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
