@@ -18,9 +18,10 @@
       <file leaf-file-name="highchart.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/components/highchart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="152" column="24" lean-forward="false" selection-start-line="152" selection-start-column="24" selection-end-line="152" selection-end-column="24" />
+            <state relative-caret-position="1116">
+              <caret line="123" column="29" lean-forward="false" selection-start-line="123" selection-start-column="29" selection-end-line="123" selection-end-column="29" />
               <folding>
+                <element signature="e#1318#2783#0" expanded="false" />
                 <marker date="1487222026030" expanded="true" signature="2985:2999" ph="..." />
                 <marker date="1487222026030" expanded="true" signature="3060:3090" ph="..." />
                 <marker date="1487222026030" expanded="true" signature="3131:3140" ph="..." />
@@ -29,40 +30,76 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dispositivos.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dispositivos.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/modules/dispositivos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="66" column="34" lean-forward="true" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
-              <folding />
+            <state relative-caret-position="268">
+              <caret line="378" column="36" lean-forward="true" selection-start-line="378" selection-start-column="36" selection-end-line="378" selection-end-column="36" />
+              <folding>
+                <element signature="e#1829#3215#0" expanded="false" />
+                <element signature="e#3266#4691#0" expanded="false" />
+                <element signature="e#4744#5374#0" expanded="false" />
+                <element signature="e#5423#6664#0" expanded="false" />
+                <element signature="e#6714#7952#0" expanded="false" />
+                <element signature="e#7995#8764#0" expanded="false" />
+                <element signature="e#8808#9578#0" expanded="false" />
+                <marker date="1487822836359" expanded="true" signature="8295:8309" ph="..." />
+                <marker date="1487822836359" expanded="true" signature="8384:8414" ph="..." />
+                <marker date="1487822836359" expanded="true" signature="8468:8477" ph="..." />
+                <marker date="1487822836359" expanded="true" signature="9109:9123" ph="..." />
+                <marker date="1487822836359" expanded="true" signature="9198:9228" ph="..." />
+                <marker date="1487822836359" expanded="true" signature="9282:9291" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DispositivosController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DispositivosController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/DispositivosController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="203" column="17" lean-forward="true" selection-start-line="203" selection-start-column="17" selection-end-line="203" selection-end-column="17" />
+            <state relative-caret-position="225">
+              <caret line="248" column="13" lean-forward="true" selection-start-line="248" selection-start-column="13" selection-end-line="248" selection-end-column="13" />
               <folding>
+                <element signature="n#actionAdmin#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionCreate#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionCreate__ajax#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionView#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumo#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoLive#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoLastWeek#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoLastMonth#0;n#DispositivosController#0;n#!!top" expanded="false" />
                 <element signature="n#actionGetConsumoDays#0;n#DispositivosController#0;n#!!top" expanded="false" />
                 <element signature="n#actionGetConsumoHours#0;n#DispositivosController#0;n#!!top" expanded="false" />
-                <marker date="1487394613475" expanded="true" signature="3559:3679" ph="SELECT UNIX_... registros" />
-                <marker date="1487394613475" expanded="true" signature="3912:4033" ph="SELECT UNIX_... registros" />
-                <marker date="1487394613475" expanded="true" signature="4273:4496" ph="SELECT corri... registros" />
-                <marker date="1487394613475" expanded="true" signature="4619:4995" ph="SELECT sum(c... registros" />
-                <marker date="1487394613475" expanded="true" signature="5119:5489" ph="SELECT sum(c... registros" />
-                <marker date="1487394613475" expanded="true" signature="5615:5979" ph="SELECT sum(c... registros" />
-                <marker date="1487394613475" expanded="true" signature="6238:6524" ph="SELECT sum(c... registros" />
-                <marker date="1487394613475" expanded="true" signature="6952:7169" ph="SELECT corri... registros" />
-                <marker date="1487394613475" expanded="true" signature="7421:7645" ph="SELECT corri... registros" />
-                <marker date="1487394613475" expanded="true" signature="7714:7907" ph="SELECT corri... registros" />
-                <marker date="1487394613475" expanded="true" signature="7998:8208" ph="select count... " />
-                <marker date="1487394613475" expanded="true" signature="7998:8257" ph="select count... " />
-                <marker date="1487394613475" expanded="true" signature="7998:8258" ph="select count... " />
-                <marker date="1487394613475" expanded="true" signature="7998:8333" ph="select count... " />
-                <marker date="1487394613475" expanded="true" signature="9640:9884" ph="SELECT sum(c... " />
-                <marker date="1487394613475" expanded="true" signature="11430:11676" ph="SELECT sum(c... " />
+                <element signature="n#createDataMomentResponse#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <marker date="1487819650986" expanded="true" signature="3729:3849" ph="SELECT UNIX_... registros" />
+                <marker date="1487819650986" expanded="true" signature="4082:4203" ph="SELECT UNIX_... registros" />
+                <marker date="1487819650986" expanded="true" signature="4443:4666" ph="SELECT corri... registros" />
+                <marker date="1487819650986" expanded="true" signature="4789:5165" ph="SELECT sum(c... registros" />
+                <marker date="1487819650986" expanded="true" signature="5289:5659" ph="SELECT sum(c... registros" />
+                <marker date="1487819650986" expanded="true" signature="5785:6149" ph="SELECT sum(c... registros" />
+                <marker date="1487819650986" expanded="true" signature="6408:6694" ph="SELECT sum(c... registros" />
+                <marker date="1487819650986" expanded="true" signature="7122:7339" ph="SELECT corri... registros" />
+                <marker date="1487819650986" expanded="true" signature="7591:7815" ph="SELECT corri... registros" />
+                <marker date="1487819650986" expanded="true" signature="7884:8077" ph="SELECT corri... registros" />
+                <marker date="1487819650986" expanded="true" signature="8168:8378" ph="select count... " />
+                <marker date="1487819650986" expanded="true" signature="8168:8427" ph="select count... " />
+                <marker date="1487819650986" expanded="true" signature="8168:8428" ph="select count... " />
+                <marker date="1487819650986" expanded="true" signature="8168:8503" ph="select count... " />
+                <marker date="1487819650986" expanded="true" signature="9210:9427" ph="SELECT id, c... registros" />
+                <marker date="1487819650986" expanded="true" signature="9739:9963" ph="SELECT id, c... registros" />
+                <marker date="1487819650986" expanded="true" signature="10089:10282" ph="SELECT id, c... registros" />
+                <marker date="1487819650986" expanded="true" signature="11102:11362" ph="select (sum(... registros" />
+                <marker date="1487819650986" expanded="true" signature="11102:11404" ph="select (sum(... registros" />
+                <marker date="1487819650986" expanded="true" signature="12033:12172" ph="select fecha... registros" />
+                <marker date="1487819650986" expanded="true" signature="12410:12682" ph="select date_... " />
+                <marker date="1487819650986" expanded="true" signature="12410:12683" ph="select date_... " />
+                <marker date="1487819650986" expanded="true" signature="12410:12742" ph="select date_... " />
+                <marker date="1487819650986" expanded="true" signature="12410:12861" ph="select date_... " />
+                <marker date="1487819650986" expanded="true" signature="12410:12897" ph="select date_... " />
+                <marker date="1487819650986" expanded="true" signature="14162:14711" ph="select (sum(... " />
+                <marker date="1487819650986" expanded="true" signature="16713:16957" ph="SELECT sum(c... " />
+                <marker date="1487819650986" expanded="true" signature="18360:18606" ph="SELECT sum(c... " />
               </folding>
             </state>
           </provider>
@@ -71,8 +108,8 @@
       <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="50" column="30" lean-forward="false" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+            <state relative-caret-position="252">
+              <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -84,12 +121,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/js/components/highchart.js" />
-        <option value="$PROJECT_DIR$/protected/views/dispositivos/view.php" />
         <option value="$PROJECT_DIR$/protected/config/database.php" />
-        <option value="$PROJECT_DIR$/js/modules/dispositivos.js" />
-        <option value="$PROJECT_DIR$/protected/controllers/SiteController.php" />
+        <option value="$PROJECT_DIR$/js/components/highchart.js" />
+        <option value="$PROJECT_DIR$/protected/views/layouts/main.php" />
         <option value="$PROJECT_DIR$/protected/controllers/DispositivosController.php" />
+        <option value="$PROJECT_DIR$/protected/views/dispositivos/view.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/SiteController.php" />
+        <option value="$PROJECT_DIR$/js/modules/dispositivos.js" />
       </list>
     </option>
   </component>
@@ -125,8 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -189,7 +225,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dispositivos" />
+              <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -281,6 +317,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -361,12 +399,13 @@
       <updated>1487113027547</updated>
       <workItem from="1487113030520" duration="3337000" />
       <workItem from="1487196190765" duration="19837000" />
-      <workItem from="1487368257705" duration="9605000" />
+      <workItem from="1487368257705" duration="47544000" />
+      <workItem from="1487817568075" duration="5128000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32779000" />
+    <option name="totallyTimeSpent" value="75846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -403,15 +442,110 @@
     </ignored-roots>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/js/components/highchart.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2214">
+          <caret line="123" column="29" lean-forward="false" selection-start-line="123" selection-start-column="29" selection-end-line="123" selection-end-column="29" />
+          <folding>
+            <element signature="e#1318#2783#0" expanded="false" />
+            <marker date="1487222026030" expanded="true" signature="2985:2999" ph="..." />
+            <marker date="1487222026030" expanded="true" signature="3060:3090" ph="..." />
+            <marker date="1487222026030" expanded="true" signature="3131:3140" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/dispositivos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1829#3215#0" expanded="false" />
+            <element signature="e#3266#4691#0" expanded="false" />
+            <element signature="e#4744#5374#0" expanded="false" />
+            <element signature="e#5423#6664#0" expanded="false" />
+            <element signature="e#6714#7952#0" expanded="false" />
+            <element signature="e#7995#8764#0" expanded="false" />
+            <element signature="e#8808#9578#0" expanded="false" />
+            <marker date="1487822836359" expanded="true" signature="8295:8309" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="8384:8414" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="8468:8477" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="9109:9123" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="9198:9228" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="9282:9291" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/DispositivosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6066">
+          <caret line="337" column="13" lean-forward="true" selection-start-line="337" selection-start-column="13" selection-end-line="337" selection-end-column="13" />
+          <folding>
+            <element signature="n#actionAdmin#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionCreate#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionCreate__ajax#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionView#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumo#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLive#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLastWeek#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLastMonth#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoDays#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoHours#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#createDataMomentResponse#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <marker date="1487819650986" expanded="true" signature="3729:3849" ph="SELECT UNIX_... registros" />
+            <marker date="1487819650986" expanded="true" signature="4082:4203" ph="SELECT UNIX_... registros" />
+            <marker date="1487819650986" expanded="true" signature="4443:4666" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="4789:5165" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="5289:5659" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="5785:6149" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="6408:6694" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="7122:7339" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="7591:7815" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="7884:8077" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="8168:8378" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8427" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8428" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8503" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="9210:9427" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="9739:9963" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="10089:10282" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="11102:11362" ph="select (sum(... registros" />
+            <marker date="1487819650986" expanded="true" signature="11102:11404" ph="select (sum(... registros" />
+            <marker date="1487819650986" expanded="true" signature="12033:12172" ph="select fecha... registros" />
+            <marker date="1487819650986" expanded="true" signature="12410:12682" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12683" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12742" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12861" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12897" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="14162:14711" ph="select (sum(... " />
+            <marker date="1487819650986" expanded="true" signature="16713:16957" ph="SELECT sum(c... " />
+            <marker date="1487819650986" expanded="true" signature="18360:18606" ph="SELECT sum(c... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2214">
+          <caret line="123" column="28" lean-forward="true" selection-start-line="123" selection-start-column="28" selection-end-line="123" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/components/highchart.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2736">
           <caret line="152" column="24" lean-forward="true" selection-start-line="152" selection-start-column="24" selection-end-line="152" selection-end-column="24" />
           <folding>
+            <element signature="e#1318#2783#0" expanded="false" />
             <marker date="1487222026030" expanded="true" signature="2985:2999" ph="..." />
             <marker date="1487222026030" expanded="true" signature="3060:3090" ph="..." />
             <marker date="1487222026030" expanded="true" signature="3131:3140" ph="..." />
@@ -423,7 +557,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2088">
           <caret line="116" column="29" lean-forward="true" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="e#1829#3215#0" expanded="false" />
+            <element signature="e#3266#4691#0" expanded="false" />
+            <element signature="e#4744#5374#0" expanded="false" />
+            <element signature="e#5423#6664#0" expanded="false" />
+            <element signature="e#6714#7952#0" expanded="false" />
+            <element signature="e#7995#8764#0" expanded="false" />
+            <element signature="e#8808#9578#0" expanded="false" />
+            <marker date="1487822836359" expanded="true" signature="8295:8309" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="8384:8414" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="8468:8477" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="9109:9123" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="9198:9228" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="9282:9291" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -432,24 +580,46 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#actionAdmin#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionCreate#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionCreate__ajax#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionView#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumo#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLive#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLastWeek#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLastMonth#0;n#DispositivosController#0;n#!!top" expanded="false" />
             <element signature="n#actionGetConsumoDays#0;n#DispositivosController#0;n#!!top" expanded="false" />
             <element signature="n#actionGetConsumoHours#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <marker date="1487394613475" expanded="true" signature="3559:3679" ph="SELECT UNIX_... registros" />
-            <marker date="1487394613475" expanded="true" signature="3912:4033" ph="SELECT UNIX_... registros" />
-            <marker date="1487394613475" expanded="true" signature="4273:4496" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="4619:4995" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="5119:5489" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="5615:5979" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="6238:6524" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="6952:7169" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="7421:7645" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="7714:7907" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="7998:8208" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="7998:8257" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="7998:8258" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="7998:8333" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="9640:9884" ph="SELECT sum(c... " />
-            <marker date="1487394613475" expanded="true" signature="11430:11676" ph="SELECT sum(c... " />
+            <element signature="n#createDataMomentResponse#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <marker date="1487819650986" expanded="true" signature="3729:3849" ph="SELECT UNIX_... registros" />
+            <marker date="1487819650986" expanded="true" signature="4082:4203" ph="SELECT UNIX_... registros" />
+            <marker date="1487819650986" expanded="true" signature="4443:4666" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="4789:5165" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="5289:5659" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="5785:6149" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="6408:6694" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="7122:7339" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="7591:7815" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="7884:8077" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="8168:8378" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8427" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8428" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8503" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="9210:9427" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="9739:9963" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="10089:10282" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="11102:11362" ph="select (sum(... registros" />
+            <marker date="1487819650986" expanded="true" signature="11102:11404" ph="select (sum(... registros" />
+            <marker date="1487819650986" expanded="true" signature="12033:12172" ph="select fecha... registros" />
+            <marker date="1487819650986" expanded="true" signature="12410:12682" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12683" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12742" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12861" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12897" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="14162:14711" ph="select (sum(... " />
+            <marker date="1487819650986" expanded="true" signature="16713:16957" ph="SELECT sum(c... " />
+            <marker date="1487819650986" expanded="true" signature="18360:18606" ph="SELECT sum(c... " />
           </folding>
         </state>
       </provider>
@@ -467,24 +637,46 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#actionAdmin#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionCreate#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionCreate__ajax#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionView#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumo#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLive#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLastWeek#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLastMonth#0;n#DispositivosController#0;n#!!top" expanded="false" />
             <element signature="n#actionGetConsumoDays#0;n#DispositivosController#0;n#!!top" expanded="false" />
             <element signature="n#actionGetConsumoHours#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <marker date="1487394613475" expanded="true" signature="3559:3679" ph="SELECT UNIX_... registros" />
-            <marker date="1487394613475" expanded="true" signature="3912:4033" ph="SELECT UNIX_... registros" />
-            <marker date="1487394613475" expanded="true" signature="4273:4496" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="4619:4995" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="5119:5489" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="5615:5979" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="6238:6524" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="6952:7169" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="7421:7645" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="7714:7907" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="7998:8208" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="7998:8257" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="7998:8258" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="7998:8333" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="9640:9884" ph="SELECT sum(c... " />
-            <marker date="1487394613475" expanded="true" signature="11430:11676" ph="SELECT sum(c... " />
+            <element signature="n#createDataMomentResponse#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <marker date="1487819650986" expanded="true" signature="3729:3849" ph="SELECT UNIX_... registros" />
+            <marker date="1487819650986" expanded="true" signature="4082:4203" ph="SELECT UNIX_... registros" />
+            <marker date="1487819650986" expanded="true" signature="4443:4666" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="4789:5165" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="5289:5659" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="5785:6149" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="6408:6694" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="7122:7339" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="7591:7815" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="7884:8077" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="8168:8378" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8427" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8428" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8503" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="9210:9427" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="9739:9963" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="10089:10282" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="11102:11362" ph="select (sum(... registros" />
+            <marker date="1487819650986" expanded="true" signature="11102:11404" ph="select (sum(... registros" />
+            <marker date="1487819650986" expanded="true" signature="12033:12172" ph="select fecha... registros" />
+            <marker date="1487819650986" expanded="true" signature="12410:12682" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12683" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12742" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12861" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12897" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="14162:14711" ph="select (sum(... " />
+            <marker date="1487819650986" expanded="true" signature="16713:16957" ph="SELECT sum(c... " />
+            <marker date="1487819650986" expanded="true" signature="18360:18606" ph="SELECT sum(c... " />
           </folding>
         </state>
       </provider>
@@ -511,14 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="50" column="30" lean-forward="false" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -529,9 +713,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/components/highchart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="152" column="24" lean-forward="false" selection-start-line="152" selection-start-column="24" selection-end-line="152" selection-end-column="24" />
+        <state relative-caret-position="1116">
+          <caret line="123" column="29" lean-forward="false" selection-start-line="123" selection-start-column="29" selection-end-line="123" selection-end-column="29" />
           <folding>
+            <element signature="e#1318#2783#0" expanded="false" />
             <marker date="1487222026030" expanded="true" signature="2985:2999" ph="..." />
             <marker date="1487222026030" expanded="true" signature="3060:3090" ph="..." />
             <marker date="1487222026030" expanded="true" signature="3131:3140" ph="..." />
@@ -539,45 +724,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/dispositivos.js">
+    <entry file="file://$PROJECT_DIR$/protected/views/layouts/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="66" column="34" lean-forward="true" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="317">
+          <caret line="144" column="76" lean-forward="true" selection-start-line="144" selection-start-column="76" selection-end-line="144" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/DispositivosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="248" column="13" lean-forward="true" selection-start-line="248" selection-start-column="13" selection-end-line="248" selection-end-column="13" />
+          <folding>
+            <element signature="n#actionAdmin#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionCreate#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionCreate__ajax#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionView#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumo#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLive#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLastWeek#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLastMonth#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoDays#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoHours#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#createDataMomentResponse#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <marker date="1487819650986" expanded="true" signature="3729:3849" ph="SELECT UNIX_... registros" />
+            <marker date="1487819650986" expanded="true" signature="4082:4203" ph="SELECT UNIX_... registros" />
+            <marker date="1487819650986" expanded="true" signature="4443:4666" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="4789:5165" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="5289:5659" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="5785:6149" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="6408:6694" ph="SELECT sum(c... registros" />
+            <marker date="1487819650986" expanded="true" signature="7122:7339" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="7591:7815" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="7884:8077" ph="SELECT corri... registros" />
+            <marker date="1487819650986" expanded="true" signature="8168:8378" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8427" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8428" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="8168:8503" ph="select count... " />
+            <marker date="1487819650986" expanded="true" signature="9210:9427" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="9739:9963" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="10089:10282" ph="SELECT id, c... registros" />
+            <marker date="1487819650986" expanded="true" signature="11102:11362" ph="select (sum(... registros" />
+            <marker date="1487819650986" expanded="true" signature="11102:11404" ph="select (sum(... registros" />
+            <marker date="1487819650986" expanded="true" signature="12033:12172" ph="select fecha... registros" />
+            <marker date="1487819650986" expanded="true" signature="12410:12682" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12683" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12742" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12861" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="12410:12897" ph="select date_... " />
+            <marker date="1487819650986" expanded="true" signature="14162:14711" ph="select (sum(... " />
+            <marker date="1487819650986" expanded="true" signature="16713:16957" ph="SELECT sum(c... " />
+            <marker date="1487819650986" expanded="true" signature="18360:18606" ph="SELECT sum(c... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
-          <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+          <caret line="62" column="19" lean-forward="true" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/DispositivosController.php">
+    <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="203" column="17" lean-forward="true" selection-start-line="203" selection-start-column="17" selection-end-line="203" selection-end-column="17" />
+        <state relative-caret-position="252">
+          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/dispositivos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="378" column="36" lean-forward="true" selection-start-line="378" selection-start-column="36" selection-end-line="378" selection-end-column="36" />
           <folding>
-            <element signature="n#actionGetConsumoDays#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#actionGetConsumoHours#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <marker date="1487394613475" expanded="true" signature="3559:3679" ph="SELECT UNIX_... registros" />
-            <marker date="1487394613475" expanded="true" signature="3912:4033" ph="SELECT UNIX_... registros" />
-            <marker date="1487394613475" expanded="true" signature="4273:4496" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="4619:4995" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="5119:5489" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="5615:5979" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="6238:6524" ph="SELECT sum(c... registros" />
-            <marker date="1487394613475" expanded="true" signature="6952:7169" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="7421:7645" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="7714:7907" ph="SELECT corri... registros" />
-            <marker date="1487394613475" expanded="true" signature="7998:8208" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="7998:8257" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="7998:8258" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="7998:8333" ph="select count... " />
-            <marker date="1487394613475" expanded="true" signature="9640:9884" ph="SELECT sum(c... " />
-            <marker date="1487394613475" expanded="true" signature="11430:11676" ph="SELECT sum(c... " />
+            <element signature="e#1829#3215#0" expanded="false" />
+            <element signature="e#3266#4691#0" expanded="false" />
+            <element signature="e#4744#5374#0" expanded="false" />
+            <element signature="e#5423#6664#0" expanded="false" />
+            <element signature="e#6714#7952#0" expanded="false" />
+            <element signature="e#7995#8764#0" expanded="false" />
+            <element signature="e#8808#9578#0" expanded="false" />
+            <marker date="1487822836359" expanded="true" signature="8295:8309" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="8384:8414" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="8468:8477" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="9109:9123" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="9198:9228" ph="..." />
+            <marker date="1487822836359" expanded="true" signature="9282:9291" ph="..." />
           </folding>
         </state>
       </provider>

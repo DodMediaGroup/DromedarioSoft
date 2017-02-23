@@ -60,7 +60,7 @@ class SiteController extends Controller
 
 
 	public function actionDeviceTest(){
-		$cant = 500;
+		$cant = 50;
 		while ($cant > 0) {
 			set_time_limit(20);
 
@@ -77,16 +77,17 @@ class SiteController extends Controller
 		}
 
 		//$segundos = 300;
-		/*$segundos = 3600*3;
+		/*$segundos = 3600*24*35;
 		while ($segundos > 0) {
 			set_time_limit(20);
 
 			$registro = new Registros;
 			$registro->dispositivo = 2;
-			$registro->corriente_1 = (0 + (rand(1,100) / 100));
-			$registro->corriente_2 = (0 + (rand(1,100) / 100));
-			$registro->corriente_3 = (0 + (rand(1,100) / 100));
-			$registro->fecha = new CDbExpression('DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL '.$segundos.' SECOND)');
+			$registro->corriente_1 = (0 + (rand(1,70) / 100));
+			$registro->corriente_2 = (0 + (rand(1,70) / 100));
+			$registro->corriente_3 = (0 + (rand(1,70) / 100));
+            $registro->fecha = new CDbExpression('DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL '.$segundos.' SECOND)');
+            //$registro->fecha = new CDbExpression('DATE_SUB("2017-02-01", INTERVAL '.$segundos.' SECOND)');
 			$registro->save();
 
 			$segundos = $segundos - rand(11,15);

@@ -20,11 +20,40 @@
                 </div>
             </div>
             <div class="widget-content padding">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <highchart
+                                id="highchart-live"
+                                type="chart"
+                                data__url="<?php echo $this->createUrl('dispositivos/getConsumoLive/'.$dispositivo->id); ?>"
+                                data__filter="corriente_1, corriente_2, corriente_3"
+                        >
+
+                        </highchart>
+                    </div>
+                    <div id="live__data-detail" class="col-sm-3">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <h2><strong>Consumo Total Live</strong> de <?php echo $dispositivo->nombre; ?></h2>
+                <div class="additional-btn">
+                    <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                </div>
+            </div>
+            <div class="widget-content padding">
                 <highchart
-                        id="highchart-live"
+                        id="highchart-live__total"
                         type="chart"
-                        data__url="<?php echo $this->createUrl('dispositivos/getConsumoLive/'.$dispositivo->id); ?>"
-                        data__filter="corriente_1, corriente_2, corriente_3"
+                        data__url="<?php echo $this->createUrl('dispositivos/getConsumoLiveTotal/'.$dispositivo->id); ?>"
                 >
 
                 </highchart>
@@ -57,53 +86,76 @@
     </div>
 </div>
 
-<!--<div class="row">
-	<div class="col-md-12">
-		<div class="widget">
-			<div class="widget-header">
-				<h2><strong>Consumo Live</strong> de <?php echo $dispositivo->nombre; ?></h2>
-				<div class="additional-btn">
-					<a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
-				</div>
-			</div>
-			<div class="widget-content padding">
-				<highchart
-					type="stockChart"
-					data="<?php echo $dispositivo->id ?>"
-					data__url="<?php echo $this->createUrl('dispositivos/getConsumoLive'); ?>"
-					data__filter="corriente_1, corriente_2, corriente_3"
-					live=""
-				>
-					
-				</highchart>
-			</div>
-		</div>
-	</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <h2><strong>Tendencia de Consumo Total </strong> de <?php echo $dispositivo->nombre; ?></h2>
+                <div class="additional-btn">
+                    <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                </div>
+            </div>
+            <div class="widget-content padding">
+                <highchart
+                        id="highchart-total__moment"
+                        type="stockChart"
+                        data__url="<?php echo $this->createUrl('dispositivos/getConsumoTotal/'.$dispositivo->id); ?>"
+                        data__filter="corriente_1, corriente_2, corriente_3"
+                        moment
+                >
+
+                </highchart>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row">
-	<div class="col-md-12">
-		<div class="widget">
-			<div class="widget-header">
-				<h2><strong>Consumo</strong> de <?php echo $dispositivo->nombre; ?></h2>
-				<div class="additional-btn">
-					<a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
-				</div>
-			</div>
-			<div class="widget-content padding">
-				<highchart
-					type="stockChart"
-					data="<?php echo $dispositivo->id ?>"
-					data__url="<?php echo $this->createUrl('dispositivos/getConsumo'); ?>"
-					data__filter="corriente_1, corriente_2, corriente_3"
-					char__async-loading
-				>
-					
-				</highchart>
-			</div>
-		</div>
-	</div>
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <h2><strong>Consumo ultima semana </strong> de <?php echo $dispositivo->nombre; ?></h2>
+                <div class="additional-btn">
+                    <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                </div>
+            </div>
+            <div class="widget-content padding">
+                <highchart
+                        id="highchart-week__last"
+                        type="chart"
+                        data__url="<?php echo $this->createUrl('dispositivos/getConsumoLastWeek/'.$dispositivo->id); ?>"
+                        data__filter="corriente_1, corriente_2, corriente_3"
+                >
+
+                </highchart>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <h2><strong>Consumo ultimo mes completo </strong> de <?php echo $dispositivo->nombre; ?></h2>
+                <div class="additional-btn">
+                    <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                </div>
+            </div>
+            <div class="widget-content padding">
+                <highchart
+                        id="highchart-month__last"
+                        type="chart"
+                        data__url="<?php echo $this->createUrl('dispositivos/getConsumoLastMonth/'.$dispositivo->id); ?>"
+                        data__filter="corriente_1, corriente_2, corriente_3"
+                >
+
+                </highchart>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="row">
 	<div class="col-md-12">
@@ -116,11 +168,10 @@
 			</div>
 			<div class="widget-content padding">
 				<highchart
-					type="columnChart"
-					data="<?php echo $dispositivo->id ?>"
-					data__url="<?php echo $this->createUrl('dispositivos/getConsumoDays'); ?>"
-					data__filter="corriente_1, corriente_2, corriente_3"
-					char__async-loading
+                    id="highchart-days"
+					type="chart"
+					data__url="<?php echo $this->createUrl('dispositivos/getConsumoDays/'.$dispositivo->id); ?>"
+                    data__filter="corriente_1, corriente_2, corriente_3"
 				>
 					
 				</highchart>
@@ -140,15 +191,14 @@
 			</div>
 			<div class="widget-content padding">
 				<highchart
-					type="columnChart"
-					data="<?php echo $dispositivo->id ?>"
-					data__url="<?php echo $this->createUrl('dispositivos/getConsumoHours'); ?>"
-					data__filter="corriente_1, corriente_2, corriente_3"
-					char__async-loading
+                    id="highchart-hours"
+                    type="chart"
+					data__url="<?php echo $this->createUrl('dispositivos/getConsumoHours/'.$dispositivo->id); ?>"
+                    data__filter="corriente_1, corriente_2, corriente_3"
 				>
 					
 				</highchart>
 			</div>
 		</div>
 	</div>
-</div>-->
+</div>

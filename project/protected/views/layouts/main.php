@@ -136,7 +136,7 @@
 	<!-- Charts Libraries -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-	<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+	<!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
 	<script src="https://code.highcharts.com/stock/highstock.js"></script>
 	<!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script> -->
 
