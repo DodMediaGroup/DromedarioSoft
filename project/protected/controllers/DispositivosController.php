@@ -121,9 +121,63 @@ class DispositivosController extends Controller
 		$dispositivo = $this->loadModel($id);
 		$persona = $dispositivo->usuario0->personases[0];
 
+		if(isset($_GET['from']) && isset($_GET['to'])){
+		    $dateFrom = null;
+		    $dateTo = null;
+		    if(!is_numeric($_GET['from']))
+		        unset($_GET['from']);
+            else
+                $dateFrom = $_GET['from'];
+
+            if(!is_numeric($_GET['to']))
+                unset($_GET['to']);
+            else
+                $dateTo = $_GET['to'];
+
+            if($dateFrom && $dateTo){
+                if($dateFrom > $dateTo){
+                    $_GET['from'] = $dateTo;
+                    $_GET['to'] = $dateFrom;
+                }
+            }
+        }
+
+
+		$dateFilter = null;
+		if(isset($_GET['from'])) {
+            $dateFilter['from'] = $_GET['from'];
+            $dateFilter['query'] = '?from='.$_GET['from'];
+        }
+		if(isset($_GET['to'])){
+            $dateFilter['to'] = $_GET['to'];
+            $dateFilter['query'] .= (!isset($dateFilter['query']))?'?':'&';
+            $dateFilter['query'] .= 'to='.$_GET['to'];
+        }
+
+        if(isset($dateFilter['query'])){
+            $queryDate = '';
+            if(isset($_GET['from']))
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) >= '.$_GET['from'];
+            if(isset($_GET['to']))
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) <= '.$_GET['to'];
+
+            $registro = MyMethods::querySql('select
+                (sum(corriente_1) + sum(corriente_2) + sum(corriente_3)) as total,
+                (sum(corriente_1)) as corriente_1,
+                (sum(corriente_2)) as corriente_2,
+                (sum(corriente_3)) as corriente_3
+                FROM registros
+                WHERE
+                    dispositivo = '.$dispositivo->id.
+                $queryDate.';');
+            $dateFilter['registro'] = $registro;
+        }
+
 		$this->render('view', array(
 			'dispositivo'=>$dispositivo,
-			'persona'=>$persona
+			'persona'=>$persona,
+
+            'dateFilter'=>$dateFilter
 		));
 	}
 
@@ -276,7 +330,22 @@ class DispositivosController extends Controller
             $charSerie = array();
             $acomulado = [];
 
-            $registros = MyMethods::querySql('select (sum(corriente_1) / count(*)) as corriente_1, (sum(corriente_2) / count(*)) as corriente_2, (sum(corriente_3) / count(*)) as corriente_3, UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d %H")) as fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' group by date_format(fecha, "%Y-%m-%d %H")');
+            $queryDate = '';
+            if(isset($_GET['from']))
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) >= '.$_GET['from'];
+            if(isset($_GET['to']))
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) <= '.$_GET['to'];
+
+            $registros = MyMethods::querySql('select 
+                (sum(corriente_1) / count(*)) as corriente_1,
+                (sum(corriente_2) / count(*)) as corriente_2,
+                (sum(corriente_3) / count(*)) as corriente_3,
+                UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d %H")) as fecha
+                FROM registros
+                WHERE
+                    dispositivo = '.$dispositivo->id.
+                    $queryDate.'
+                group by date_format(fecha, "%Y-%m-%d %H")');
 
             if(isset($_GET['moment']))
                 $response = $this->createDataMomentResponse($dispositivo, $charSerie, $registros, $acomulado);
@@ -295,7 +364,7 @@ class DispositivosController extends Controller
 
             $lastDayWeek = 6; // Sabado
 
-            $dateMax = MyMethods::querySql('select date_format(fecha, "%Y-%m-%d") as fecha from registros where date_format(fecha, "%w") = '.$lastDayWeek.' order by fecha desc limit 1;');
+            $dateMax = MyMethods::querySql('select date_format(fecha, "%Y-%m-%d") as fecha from registros where dispositivo = '.$dispositivo->id.' and date_format(fecha, "%w") = '.$lastDayWeek.' order by fecha desc limit 1;');
             $dateMax = $dateMax[0];
 
             $dateMin = MyMethods::querySql('select DATE_SUB("'.$dateMax['fecha'].'", INTERVAL 7 DAY) as fecha');
@@ -421,7 +490,23 @@ class DispositivosController extends Controller
 				}
 			}
 
-			$registros = MyMethods::querySql('SELECT sum(corriente_1) as corriente_1, sum(corriente_2) as corriente_2, sum(corriente_3) as corriente_3, DATE_FORMAT(fecha, "%w") as day FROM registros WHERE dispositivo = '.$dispositivo->id.' group by DATE_FORMAT(fecha, "%w") ORDER BY day ASC');
+            $queryDate = '';
+            if(isset($_GET['from']))
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) >= '.$_GET['from'];
+            if(isset($_GET['to']))
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) <= '.$_GET['to'];
+
+			$registros = MyMethods::querySql('SELECT
+                sum(corriente_1) as corriente_1,
+                sum(corriente_2) as corriente_2,
+                sum(corriente_3) as corriente_3,
+                DATE_FORMAT(fecha, "%w") as day
+                FROM registros
+                WHERE
+                    dispositivo = '.$dispositivo->id.
+                    $queryDate.'
+                group by DATE_FORMAT(fecha, "%w")
+                ORDER BY day ASC');
 
 			foreach ($registros as $key => $registro) {
 				$charSerie['series'][0]['data'][$registro['day']] = floatval($registro['corriente_1']);
@@ -437,7 +522,6 @@ class DispositivosController extends Controller
 
 	public function actionGetConsumoHours(){
 		if(isset($_GET['id'])){
-			$id = $_GET['id'];
 			$dispositivo = $this->loadModel($_GET['id']);
 
 			$hours = array('12:00 AM','01:00 AM','02:00 AM','03:00 AM','04:00 AM','05:00 AM','06:00 AM','07:00 AM','08:00 AM','09:00 AM','10:00 AM','11:00 AM','12:00 PM','01:00 PM','02:00 PM','03:00 PM','04:00 PM','05:00 PM','06:00 PM','07:00 PM','08:00 PM','09:00 PM','10:00 PM','11:00 PM');
@@ -466,7 +550,23 @@ class DispositivosController extends Controller
 				}
 			}
 
-			$registros = MyMethods::querySql('SELECT sum(corriente_1) as corriente_1, sum(corriente_2) as corriente_2, sum(corriente_3) as corriente_3, DATE_FORMAT(fecha, "%k") as hour FROM registros WHERE dispositivo = '.$dispositivo->id.' group by DATE_FORMAT(fecha, "%k") ORDER BY hour ASC');
+            $queryDate = '';
+            if(isset($_GET['from']))
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) >= '.$_GET['from'];
+            if(isset($_GET['to']))
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) <= '.$_GET['to'];
+
+			$registros = MyMethods::querySql('SELECT
+                sum(corriente_1) as corriente_1,
+                sum(corriente_2) as corriente_2,
+                sum(corriente_3) as corriente_3,
+                DATE_FORMAT(fecha, "%k") as hour
+                FROM registros
+                WHERE
+                    dispositivo = '.$dispositivo->id.
+                    $queryDate.'
+                group by DATE_FORMAT(fecha, "%k")
+                ORDER BY hour ASC');
 
 			foreach ($registros as $key => $registro) {
 				$charSerie['series'][0]['data'][$registro['hour']] = floatval($registro['corriente_1']);

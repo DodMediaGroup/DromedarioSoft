@@ -165,6 +165,8 @@
 
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap-calendar/js/bic_calendar.min.js"></script>
 
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/moment/min/moment.min.js"></script>
+
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/components/highchart.js"></script>
 	
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/template.js"></script>

@@ -44,7 +44,7 @@ var highChartsConf = {
             },
             yAxis: {
                 title: {
-                    text: 'Counsumo (xx)'
+                    text: 'Counsumo (vatios)'
                 }
             }
         }
@@ -56,8 +56,14 @@ var highChartsConf = {
                 animation: Highcharts.svg,
                 marginRight: 10,
                 events: {
+                    redraw: function(){
+                        var series = this.series;
+                        $.showDataDetail(series, '#live__total__data-detail');
+                        console.log(series);
+                    },
                     load: function () {
                         var series = this.series;
+                        $.showDataDetail(series, '#live__total__data-detail');
                         setInterval(function () {
                             var last = series[0].data[series[0].data.length - 1].x;
                             $.loadDataHighChart(highchart, function(json) {
@@ -84,7 +90,7 @@ var highChartsConf = {
             },
             yAxis: {
                 title: {
-                    text: 'Counsumo (xx)'
+                    text: 'Counsumo (vatios)'
                 }
             }
         }
@@ -124,7 +130,7 @@ var highChartsConf = {
             },
             yAxis: {
                 title: {
-                    text: 'Counsumo (xx)'
+                    text: 'Counsumo (vatios)'
                 }
             }
         }
@@ -152,7 +158,7 @@ var highChartsConf = {
             },
             yAxis: {
                 title: {
-                    text: 'Counsumo (xx)'
+                    text: 'Counsumo (vatios)'
                 }
             }
         }
@@ -170,7 +176,10 @@ var highChartsConf = {
                 text: 'Consumo última semana'
             },
             xAxis: {
-                tickPixelInterval: 50
+                tickPixelInterval: 50,
+                labels: {
+                    format: '{value:%a %e %b}'
+                }
             },
             yAxis: {
                 title: {
@@ -199,7 +208,7 @@ var highChartsConf = {
                 colsize: 24 * 36e5,
                 tooltip: {
                     headerFormat: 'Consumo<br/>',
-                    pointFormat: '{point.x:%e %b, %Y} {point.y}:00: <b>{point.value} XX</b>'
+                    pointFormat: '{point.x:%e %b, %Y} {point.y}:00: <b>{point.value} Vatios</b>'
                 }
             }]
         }
@@ -246,7 +255,7 @@ var highChartsConf = {
                 colsize: 24 * 36e5,
                 tooltip: {
                     headerFormat: 'Consumo<br/>',
-                    pointFormat: '{point.x:%e %b, %Y} {point.y}:00: <b>{point.value} XX</b>'
+                    pointFormat: '{point.x:%e %b, %Y} {point.y}:00: <b>{point.value} Vatios</b>'
                 }
             }]
         }
@@ -272,7 +281,7 @@ var highChartsConf = {
             },
             yAxis: {
                 title: {
-                    text: 'Counsumo (xx)'
+                    text: 'Counsumo (vatios)'
                 }
             }
         }
@@ -298,71 +307,18 @@ var highChartsConf = {
             },
             yAxis: {
                 title: {
-                    text: 'Counsumo (xx)'
+                    text: 'Counsumo (vatios)'
                 }
             }
         }
     }
 };
 
-jQuery(document).ready(function($) {
-    Highcharts.setOptions({
-        global: {
-            useUTC: false
-        }
-    });
-
-	$('highchart').each(function(){
-        var highchart = $(this);
-        var options = {};
-
-        if(highchart.is('[data__url]')){
-            $.loadDataHighChart(highchart, function(json) {
-                if(json.options)
-                    options = json.options;
-                else if(json.csv)
-                    options.data = {csv: json.csv, lineDelimiter: ';'};
-                else
-                    options.series = json;
-                $.createHighChart(highchart, options);
-            });
-        }
-        else
-            $.createHighChart(highchart, options);
+$(document).on('ready', function(){
+    $('#filter__date').on('click', function(){
+        $.filterDataDate();
     });
 });
-
-$.loadDataHighChart = function(highchart, success, filter){
-    var url = highchart.attr('data__url');
-    filter = filter || {};
-    if(highchart.is('[data__filter]'))
-        filter.filter = $.trim(highchart.attr('data__filter'));
-    if(highchart.is('[moment]'))
-        filter.moment = filter.moment || true;
-
-    $.getJSON(url, filter, success);
-};
-
-$.createHighChart = function(highchart, options){
-    if(highchart.attr('type') == 'chart'){
-        options = $.extend(highChartsConf[highchart.attr('id')](highchart), options);
-        //console.log(options);
-        $.createHighChartsChart(highchart, options);
-    }
-    else if(highchart.attr('type') == 'stockChart'){
-        options = $.extend(highChartsConf[highchart.attr('id')](highchart), options);
-        $.createHighChartsStockChart(highchart, options);
-    }
-};
-
-$.createHighChartsChart = function(highchart, options){
-    HIGHCHARTS__list[highchart.attr('id')] = Highcharts.chart(highchart.attr('id'), options);
-};
-
-$.createHighChartsStockChart = function(highchart, options){
-    HIGHCHARTS__list[highchart.attr('id')] = Highcharts.stockChart(highchart.attr('id'), options);
-};
-
 
 
 $.showDataDetail = function(series, container){
@@ -391,4 +347,30 @@ $.showDataDetail = function(series, container){
                 container.append($('<hr>'));
         }
     });
+};
+
+$.filterDataDate = function(){
+    var dateFrom = $('#filter__date__from').val(),
+        dateTo = $('#filter__date__to').val();
+
+    var query = '';
+
+    if(dateFrom != '' || dateTo != ''){
+        if(dateFrom != ''){
+            dateFrom = moment(dateFrom, 'MM/DD/YYYY', true);
+            if(dateFrom.isValid())
+                query = '?from='+(dateFrom.valueOf() / 1000);
+        }
+        if(dateTo != ''){
+            dateTo = moment(dateTo, 'MM/DD/YYYY', true);
+            if(dateTo.isValid()){
+                query += (query == '')?'?':'&';
+                query += 'to='+(dateTo.valueOf() / 1000);
+            }
+        }
+    }
+
+    var link = $('#filter__date__url');
+    link.attr('href', link.attr('href')+query);
+    link[0].click();
 };
