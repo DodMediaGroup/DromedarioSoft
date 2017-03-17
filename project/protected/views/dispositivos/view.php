@@ -11,6 +11,14 @@
 </div>
 
 <div class="row">
+    <div class="col-xs-12">
+        <a class="btn btn-danger" href="<?php echo $this->createUrl('estaciones/'.$dispositivo->estacion); ?>">Atras</a>
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
     <div class="col-md-12">
         <div class="widget">
             <div class="widget-content padding">

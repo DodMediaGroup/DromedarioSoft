@@ -26,7 +26,7 @@ class ClientesController extends Controller
 					'admin',
 					'create', 'create__ajax',
 
-					'dispositivos',
+					'estaciones',
 
 					'autocomplete__json'
 				),
@@ -130,13 +130,13 @@ class ClientesController extends Controller
 
 
 
-	public function actionDispositivos($id){
+	public function actionEstaciones($id){
 		$cliente = $this->loadModel($id);
-		$dispositivos = Dispositivos::model()->findAllByAttributes(array('usuario'=>$cliente->id));
+		$estaciones = Estaciones::model()->findAllByAttributes(array('usuario'=>$cliente->id));
 
-		$this->render('//dispositivos/admin', array(
+		$this->render('//estaciones/admin', array(
 			'cliente'=>$cliente,
-			'dispositivos'=>$dispositivos
+			'estaciones'=>$estaciones
 		));
 	}
 

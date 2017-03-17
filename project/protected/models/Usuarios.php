@@ -11,7 +11,7 @@
  * @property integer $estado
  *
  * The followings are the available model relations:
- * @property Dispositivos[] $dispositivoses
+ * @property Estaciones[] $estaciones
  * @property Personas[] $personases
  * @property UsuarioPasswords[] $usuarioPasswords
  * @property UsuarioRoles $rol0
@@ -51,7 +51,7 @@ class Usuarios extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'dispositivoses' => array(self::HAS_MANY, 'Dispositivos', 'usuario'),
+			'estaciones' => array(self::HAS_MANY, 'Estaciones', 'usuario'),
 			'personases' => array(self::HAS_MANY, 'Personas', 'usuario'),
 			'usuarioPasswords' => array(self::HAS_MANY, 'UsuarioPasswords', 'usuario'),
 			'rol0' => array(self::BELONGS_TO, 'UsuarioRoles', 'rol'),

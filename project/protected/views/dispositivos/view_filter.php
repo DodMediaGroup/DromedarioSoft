@@ -34,7 +34,7 @@
                 </div>
                 <div class="text-box">
                     <p class="maindata">TOTAL <b>CONSUMO</b></p>
-                    <h2><span class="animate-number" data-value="<?php echo number_format($dateFilter['registro'][0]['total'], 2,'.',''); ?>" data-duration="3000">0</span> W</h2>
+                    <h2><span class="animate-number" data-value="<?php echo number_format(($dateFilter['registro'][0]['total'] / 1000), 2,'.',''); ?>" data-duration="3000">0</span> Kw</h2>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="text-box">
                     <p class="maindata">FASE <b>1</b></p>
-                    <h2><span class="animate-number" data-value="<?php echo number_format($dateFilter['registro'][0]['corriente_1'], 2,'.',''); ?>" data-duration="3000">0</span> W</h2>
+                    <h2><span class="animate-number" data-value="<?php echo number_format(($dateFilter['registro'][0]['corriente_1'] / 1000), 2,'.',''); ?>" data-duration="3000">0</span> Kw</h2>
 
                     <div class="clearfix"></div>
                 </div>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="text-box">
                     <p class="maindata">FASE <b>2</b></p>
-                    <h2><span class="animate-number" data-value="<?php echo number_format($dateFilter['registro'][0]['corriente_2'], 2,'.',''); ?>" data-duration="3000">0</span> W</h2>
+                    <h2><span class="animate-number" data-value="<?php echo number_format(($dateFilter['registro'][0]['corriente_2'] / 1000), 2,'.',''); ?>" data-duration="3000">0</span> Kw</h2>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="text-box">
                     <p class="maindata">FASE <b>3</b></p>
-                    <h2><span class="animate-number" data-value="<?php echo number_format($dateFilter['registro'][0]['corriente_3'], 2,'.',''); ?>" data-duration="3000">0</span> W</h2>
+                    <h2><span class="animate-number" data-value="<?php echo number_format(($dateFilter['registro'][0]['corriente_3'] / 1000), 2,'.',''); ?>" data-duration="3000">0</span> Kw</h2>
                     <div class="clearfix"></div>
                 </div>
             </div>

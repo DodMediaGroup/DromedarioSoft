@@ -24,7 +24,7 @@
 								<th>Nombres</th>
 								<th>Apellidos</th>
 								<th>Email</th>
-								<th>Dispositivos</th>
+								<th>Estaciones</th>
 								<th>Opciones</th>
 							</tr>
 						</thead>
@@ -35,7 +35,7 @@
 								<th>Nombres</th>
 								<th>Apellidos</th>
 								<th>Email</th>
-								<th>Dispositivos</th>
+								<th>Estaciones</th>
 								<th>Opciones</th>
 							</tr>
 						</tfoot>
@@ -50,10 +50,10 @@
 									<td><?php echo $persona->nombre; ?></td>
 									<td><?php echo $persona->apellido; ?></td>
 									<td><a href="mailto:<?php echo $cliente->email; ?>"><?php echo $cliente->email; ?></a></td>
-									<td><?php echo count($cliente->dispositivoses); ?></td>
+									<td><?php echo count($cliente->estaciones); ?></td>
 									<td>
 										<div class="btn-group btn-group-xs">
-											<a href="<?php echo $this->createUrl('clientes/dispositivos/'.$cliente->id) ?>" data-toggle="tooltip" title="Dispositivos" class="btn btn-default"><i class="fa fa-gamepad"></i></a>
+											<a href="<?php echo $this->createUrl('clientes/estaciones/'.$cliente->id) ?>" data-toggle="tooltip" title="Estaciones" class="btn btn-default"><i class="fa fa-building-o"></i></a>
 										</div>
 									</td>
 								</tr>

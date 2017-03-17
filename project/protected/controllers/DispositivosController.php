@@ -25,7 +25,7 @@ class DispositivosController extends Controller
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array(
-					'admin',
+					//'admin',
 					'view',
 
 					'getConsumo',
@@ -119,7 +119,7 @@ class DispositivosController extends Controller
         $load->registerScriptFile(Yii::app()->request->baseUrl.'/js/modules/dispositivos.js',CClientScript::POS_END);
 
 		$dispositivo = $this->loadModel($id);
-		$persona = $dispositivo->usuario0->personases[0];
+		$persona = $dispositivo->estacion0->usuario0->personases[0];
 
 		if(isset($_GET['from']) && isset($_GET['to'])){
 		    $dateFrom = null;
@@ -643,9 +643,11 @@ class DispositivosController extends Controller
 	{
 		if(Yii::app()->user->getState('_userRol') == 1)
 			$model = Dispositivos::model()->findByAttributes(array('id'=>$id));
-		else
-			$model = Dispositivos::model()->findByAttributes(array('id'=>$id, 'usuario'=>Yii::app()->user->getState('_userId')));
-
+		else {
+            $model = Dispositivos::model()->findByAttributes(array('id' => $id));
+            if($model->estacion0->usuario != Yii::app()->user->getState('_userId'))
+                $model = null;
+        }
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
