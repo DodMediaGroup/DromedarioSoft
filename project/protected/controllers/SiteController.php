@@ -28,9 +28,46 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
 		if(!Yii::app()->user->isGuest){
-			$this->render('index', array(
-				
-			));
+            if(Yii::app()->user->getState('_userRol') == 1){
+                $clientes = Personas::model()->findAll();
+                $estaciones = Estaciones::model()->findAll();
+                $dispositivos = Dispositivos::model()->findAll();
+
+                $this->render('index__admin', array(
+                    'clientes'=>$clientes,
+                    'estaciones'=>$estaciones,
+                    'dispositivos'=>$dispositivos
+                ));
+            }
+            else{
+                $estaciones = Estaciones::model()->findAllByAttributes(array(
+                    'usuario'=>Yii::app()->user->getState('_userId')
+                ));
+                $dispositivos = [];
+                foreach ($estaciones as $key=>$estacion){
+                    $dispositivosRows = Dispositivos::model()->findAllByAttributes(array(
+                        'estacion'=>$estacion->id
+                    ));
+                    foreach ($dispositivosRows as $index=>$dispositivo){
+                        $dispositivos[] = $dispositivo;
+                    }
+                }
+
+                $consumo = $registro = MyMethods::querySql('SELECT
+                        sum(r.corriente_1 + r.corriente_2 + r.corriente_3) as consumo
+                    FROM dod_dromedario_hardware.registros r
+                    inner join dispositivos d on r.dispositivo=d.id
+                    inner join estaciones e on d.estacion=e.id
+                    where e.usuario = '.Yii::app()->user->getState('_userId').'
+                    group by usuario;');
+
+                $this->render('index__user', array(
+                    'estaciones'=>$estaciones,
+                    'dispositivos'=>$dispositivos,
+
+                    'consumo'=>$consumo[0]
+                ));
+            }
 		}
 		else
 			$this->redirect(array('login'));

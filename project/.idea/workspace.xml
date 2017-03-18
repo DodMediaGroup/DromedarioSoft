@@ -22,7 +22,110 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="SiteController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="68" column="19" lean-forward="false" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
+              <folding>
+                <marker date="1489800268421" expanded="true" signature="1851:2173" ph="SELECT sum(r... registros" />
+                <marker date="1489800268421" expanded="true" signature="1851:2252" ph="SELECT sum(r... registros" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index__user.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/protected/views/site/index__user.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="92" column="56" lean-forward="true" selection-start-line="92" selection-start-column="56" selection-end-line="92" selection-end-column="56" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/admin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="30" column="48" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="30" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DispositivosController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/DispositivosController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="515">
+              <caret line="171" column="32" lean-forward="false" selection-start-line="163" selection-start-column="12" selection-end-line="171" selection-end-column="32" />
+              <folding>
+                <element signature="n#actionCreate#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionCreate__ajax#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumo#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoLive#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoLiveTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoLastWeek#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoLastMonth#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoDays#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#actionGetConsumoHours#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <element signature="n#createDataMomentResponse#0;n#DispositivosController#0;n#!!top" expanded="false" />
+                <marker date="1489729404183" expanded="true" signature="4607:4936" ph="select (sum(... registros" />
+                <marker date="1489729404183" expanded="true" signature="5571:5691" ph="SELECT UNIX_... registros" />
+                <marker date="1489729404183" expanded="true" signature="5924:6045" ph="SELECT UNIX_... registros" />
+                <marker date="1489729404183" expanded="true" signature="6285:6508" ph="SELECT corri... registros" />
+                <marker date="1489729404183" expanded="true" signature="6631:7007" ph="SELECT sum(c... registros" />
+                <marker date="1489729404183" expanded="true" signature="7131:7501" ph="SELECT sum(c... registros" />
+                <marker date="1489729404183" expanded="true" signature="7627:7991" ph="SELECT sum(c... registros" />
+                <marker date="1489729404183" expanded="true" signature="8250:8536" ph="SELECT sum(c... registros" />
+                <marker date="1489729404183" expanded="true" signature="8964:9181" ph="SELECT corri... registros" />
+                <marker date="1489729404183" expanded="true" signature="9433:9657" ph="SELECT corri... registros" />
+                <marker date="1489729404183" expanded="true" signature="9726:9919" ph="SELECT corri... registros" />
+                <marker date="1489729404183" expanded="true" signature="10010:10220" ph="select count... " />
+                <marker date="1489729404183" expanded="true" signature="10010:10269" ph="select count... " />
+                <marker date="1489729404183" expanded="true" signature="10010:10270" ph="select count... " />
+                <marker date="1489729404183" expanded="true" signature="10010:10345" ph="select count... " />
+                <marker date="1489729404183" expanded="true" signature="11052:11269" ph="SELECT id, c... registros" />
+                <marker date="1489729404183" expanded="true" signature="11581:11805" ph="SELECT id, c... registros" />
+                <marker date="1489729404183" expanded="true" signature="11931:12124" ph="SELECT id, c... registros" />
+                <marker date="1489729404183" expanded="true" signature="13250:13606" ph="select (sum(... registros" />
+                <marker date="1489729404183" expanded="true" signature="13250:13658" ph="select (sum(... registros" />
+                <marker date="1489729404183" expanded="true" signature="13250:13717" ph="select (sum(... registros" />
+                <marker date="1489729404183" expanded="true" signature="14346:14524" ph="select fecha... registros" />
+                <marker date="1489729404183" expanded="true" signature="14762:15034" ph="select date_... " />
+                <marker date="1489729404183" expanded="true" signature="14762:15035" ph="select date_... " />
+                <marker date="1489729404183" expanded="true" signature="14762:15094" ph="select date_... " />
+                <marker date="1489729404183" expanded="true" signature="14762:15213" ph="select date_... " />
+                <marker date="1489729404183" expanded="true" signature="14762:15249" ph="select date_... " />
+                <marker date="1489729404183" expanded="true" signature="16514:17063" ph="select (sum(... " />
+                <marker date="1489729404183" expanded="true" signature="19371:19660" ph="SELECT sum(c... " />
+                <marker date="1489729404183" expanded="true" signature="19371:19795" ph="SELECT sum(c... " />
+                <marker date="1489729404183" expanded="true" signature="21482:21772" ph="SELECT sum(c... " />
+                <marker date="1489729404183" expanded="true" signature="21482:21908" ph="SELECT sum(c... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_filter.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/view_filter.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="58" column="27" lean-forward="false" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="35" />
+              <folding>
+                <marker date="1489729958901" expanded="true" signature="240:486" ph="select UNIX_... registros" />
+                <marker date="1489729958901" expanded="true" signature="669:916" ph="select UNIX_... registros" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -36,7 +139,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/protected/config/database.php" />
-        <option value="$PROJECT_DIR$/protected/controllers/SiteController.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/js/init.js" />
         <option value="$PROJECT_DIR$/js/components/highchart.js" />
@@ -46,7 +148,6 @@
         <option value="$PROJECT_DIR$/protected/models/Dispositivos.php" />
         <option value="$PROJECT_DIR$/protected/models/Estaciones.php" />
         <option value="$PROJECT_DIR$/protected/views/estaciones/view.php" />
-        <option value="$PROJECT_DIR$/protected/views/layouts/__menu.php" />
         <option value="$PROJECT_DIR$/protected/controllers/DispositivosController.php" />
         <option value="$PROJECT_DIR$/protected/views/dispositivos/view_filter.php" />
         <option value="$PROJECT_DIR$/protected/views/dispositivos/view.php" />
@@ -57,6 +158,11 @@
         <option value="$PROJECT_DIR$/protected/views/clientes/admin.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ClientesController.php" />
         <option value="$PROJECT_DIR$/protected/views/estaciones/admin.php" />
+        <option value="$PROJECT_DIR$/protected/views/layouts/__menu.php" />
+        <option value="$PROJECT_DIR$/protected/views/site/index.php" />
+        <option value="$PROJECT_DIR$/protected/views/site/index__admin.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/SiteController.php" />
+        <option value="$PROJECT_DIR$/protected/views/site/index__user.php" />
       </list>
     </option>
   </component>
@@ -117,6 +223,86 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dispositivos" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -211,18 +397,18 @@
       <workItem from="1487817568075" duration="5726000" />
       <workItem from="1488929454660" duration="18277000" />
       <workItem from="1489186005096" duration="29000" />
-      <workItem from="1489720084306" duration="10029000" />
+      <workItem from="1489720084306" duration="16404000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104779000" />
+    <option name="totallyTimeSpent" value="111154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -259,33 +445,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/view_filter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1489729958901" expanded="true" signature="240:486" ph="select UNIX_... registros" />
-            <marker date="1489729958901" expanded="true" signature="669:916" ph="select UNIX_... registros" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/view_all.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2592">
-          <caret line="144" column="72" lean-forward="false" selection-start-line="144" selection-start-column="72" selection-end-line="144" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/components/highchart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/dispositivos.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6390">
@@ -743,14 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="62" column="19" lean-forward="true" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/template.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1199">
@@ -820,77 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/view_filter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="50" column="189" lean-forward="false" selection-start-line="50" selection-start-column="189" selection-end-line="50" selection-end-column="189" />
-          <folding>
-            <marker date="1489729958901" expanded="true" signature="240:486" ph="select UNIX_... registros" />
-            <marker date="1489729958901" expanded="true" signature="669:916" ph="select UNIX_... registros" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/layouts/__menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="30" column="112" lean-forward="false" selection-start-line="30" selection-start-column="112" selection-end-line="30" selection-end-column="112" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/DispositivosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2585">
-          <caret line="649" column="9" lean-forward="true" selection-start-line="649" selection-start-column="9" selection-end-line="649" selection-end-column="9" />
-          <folding>
-            <element signature="n#actionCreate#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#actionCreate__ajax#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#actionGetConsumo#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#actionGetConsumoLive#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#actionGetConsumoLiveTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#actionGetConsumoTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#actionGetConsumoLastWeek#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#actionGetConsumoLastMonth#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#actionGetConsumoDays#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#actionGetConsumoHours#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <element signature="n#createDataMomentResponse#0;n#DispositivosController#0;n#!!top" expanded="false" />
-            <marker date="1489729404183" expanded="true" signature="4607:4936" ph="select (sum(... registros" />
-            <marker date="1489729404183" expanded="true" signature="5571:5691" ph="SELECT UNIX_... registros" />
-            <marker date="1489729404183" expanded="true" signature="5924:6045" ph="SELECT UNIX_... registros" />
-            <marker date="1489729404183" expanded="true" signature="6285:6508" ph="SELECT corri... registros" />
-            <marker date="1489729404183" expanded="true" signature="6631:7007" ph="SELECT sum(c... registros" />
-            <marker date="1489729404183" expanded="true" signature="7131:7501" ph="SELECT sum(c... registros" />
-            <marker date="1489729404183" expanded="true" signature="7627:7991" ph="SELECT sum(c... registros" />
-            <marker date="1489729404183" expanded="true" signature="8250:8536" ph="SELECT sum(c... registros" />
-            <marker date="1489729404183" expanded="true" signature="8964:9181" ph="SELECT corri... registros" />
-            <marker date="1489729404183" expanded="true" signature="9433:9657" ph="SELECT corri... registros" />
-            <marker date="1489729404183" expanded="true" signature="9726:9919" ph="SELECT corri... registros" />
-            <marker date="1489729404183" expanded="true" signature="10010:10220" ph="select count... " />
-            <marker date="1489729404183" expanded="true" signature="10010:10269" ph="select count... " />
-            <marker date="1489729404183" expanded="true" signature="10010:10270" ph="select count... " />
-            <marker date="1489729404183" expanded="true" signature="10010:10345" ph="select count... " />
-            <marker date="1489729404183" expanded="true" signature="11052:11269" ph="SELECT id, c... registros" />
-            <marker date="1489729404183" expanded="true" signature="11581:11805" ph="SELECT id, c... registros" />
-            <marker date="1489729404183" expanded="true" signature="11931:12124" ph="SELECT id, c... registros" />
-            <marker date="1489729404183" expanded="true" signature="13250:13606" ph="select (sum(... registros" />
-            <marker date="1489729404183" expanded="true" signature="13250:13658" ph="select (sum(... registros" />
-            <marker date="1489729404183" expanded="true" signature="13250:13717" ph="select (sum(... registros" />
-            <marker date="1489729404183" expanded="true" signature="14346:14524" ph="select fecha... registros" />
-            <marker date="1489729404183" expanded="true" signature="14762:15034" ph="select date_... " />
-            <marker date="1489729404183" expanded="true" signature="14762:15035" ph="select date_... " />
-            <marker date="1489729404183" expanded="true" signature="14762:15094" ph="select date_... " />
-            <marker date="1489729404183" expanded="true" signature="14762:15213" ph="select date_... " />
-            <marker date="1489729404183" expanded="true" signature="14762:15249" ph="select date_... " />
-            <marker date="1489729404183" expanded="true" signature="16514:17063" ph="select (sum(... " />
-            <marker date="1489729404183" expanded="true" signature="19371:19660" ph="SELECT sum(c... " />
-            <marker date="1489729404183" expanded="true" signature="19371:19795" ph="SELECT sum(c... " />
-            <marker date="1489729404183" expanded="true" signature="21482:21772" ph="SELECT sum(c... " />
-            <marker date="1489729404183" expanded="true" signature="21482:21908" ph="SELECT sum(c... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -954,14 +1034,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/EstacionesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="91" column="17" lean-forward="true" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/estaciones.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -978,26 +1050,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/clientes/admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="55" column="213" lean-forward="false" selection-start-line="55" selection-start-column="213" selection-end-line="55" selection-end-column="213" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/estaciones/admin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/layouts/__menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/clientes/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="55" column="213" lean-forward="false" selection-start-line="55" selection-start-column="213" selection-end-line="55" selection-end-column="213" />
           <folding />
         </state>
       </provider>
@@ -1007,6 +1079,122 @@
         <state relative-caret-position="432">
           <caret line="138" column="13" lean-forward="false" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/site/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/EstacionesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="117" column="27" lean-forward="true" selection-start-line="117" selection-start-column="27" selection-end-line="117" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/site/index__admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="37" column="131" lean-forward="false" selection-start-line="37" selection-start-column="131" selection-end-line="37" selection-end-column="131" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="68" column="19" lean-forward="false" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
+          <folding>
+            <marker date="1489800268421" expanded="true" signature="1851:2173" ph="SELECT sum(r... registros" />
+            <marker date="1489800268421" expanded="true" signature="1851:2252" ph="SELECT sum(r... registros" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/DispositivosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="171" column="32" lean-forward="false" selection-start-line="163" selection-start-column="12" selection-end-line="171" selection-end-column="32" />
+          <folding>
+            <element signature="n#actionCreate#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionCreate__ajax#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumo#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLive#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLiveTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoTotal#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLastWeek#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoLastMonth#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoDays#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#actionGetConsumoHours#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <element signature="n#createDataMomentResponse#0;n#DispositivosController#0;n#!!top" expanded="false" />
+            <marker date="1489729404183" expanded="true" signature="4607:4936" ph="select (sum(... registros" />
+            <marker date="1489729404183" expanded="true" signature="5571:5691" ph="SELECT UNIX_... registros" />
+            <marker date="1489729404183" expanded="true" signature="5924:6045" ph="SELECT UNIX_... registros" />
+            <marker date="1489729404183" expanded="true" signature="6285:6508" ph="SELECT corri... registros" />
+            <marker date="1489729404183" expanded="true" signature="6631:7007" ph="SELECT sum(c... registros" />
+            <marker date="1489729404183" expanded="true" signature="7131:7501" ph="SELECT sum(c... registros" />
+            <marker date="1489729404183" expanded="true" signature="7627:7991" ph="SELECT sum(c... registros" />
+            <marker date="1489729404183" expanded="true" signature="8250:8536" ph="SELECT sum(c... registros" />
+            <marker date="1489729404183" expanded="true" signature="8964:9181" ph="SELECT corri... registros" />
+            <marker date="1489729404183" expanded="true" signature="9433:9657" ph="SELECT corri... registros" />
+            <marker date="1489729404183" expanded="true" signature="9726:9919" ph="SELECT corri... registros" />
+            <marker date="1489729404183" expanded="true" signature="10010:10220" ph="select count... " />
+            <marker date="1489729404183" expanded="true" signature="10010:10269" ph="select count... " />
+            <marker date="1489729404183" expanded="true" signature="10010:10270" ph="select count... " />
+            <marker date="1489729404183" expanded="true" signature="10010:10345" ph="select count... " />
+            <marker date="1489729404183" expanded="true" signature="11052:11269" ph="SELECT id, c... registros" />
+            <marker date="1489729404183" expanded="true" signature="11581:11805" ph="SELECT id, c... registros" />
+            <marker date="1489729404183" expanded="true" signature="11931:12124" ph="SELECT id, c... registros" />
+            <marker date="1489729404183" expanded="true" signature="13250:13606" ph="select (sum(... registros" />
+            <marker date="1489729404183" expanded="true" signature="13250:13658" ph="select (sum(... registros" />
+            <marker date="1489729404183" expanded="true" signature="13250:13717" ph="select (sum(... registros" />
+            <marker date="1489729404183" expanded="true" signature="14346:14524" ph="select fecha... registros" />
+            <marker date="1489729404183" expanded="true" signature="14762:15034" ph="select date_... " />
+            <marker date="1489729404183" expanded="true" signature="14762:15035" ph="select date_... " />
+            <marker date="1489729404183" expanded="true" signature="14762:15094" ph="select date_... " />
+            <marker date="1489729404183" expanded="true" signature="14762:15213" ph="select date_... " />
+            <marker date="1489729404183" expanded="true" signature="14762:15249" ph="select date_... " />
+            <marker date="1489729404183" expanded="true" signature="16514:17063" ph="select (sum(... " />
+            <marker date="1489729404183" expanded="true" signature="19371:19660" ph="SELECT sum(c... " />
+            <marker date="1489729404183" expanded="true" signature="19371:19795" ph="SELECT sum(c... " />
+            <marker date="1489729404183" expanded="true" signature="21482:21772" ph="SELECT sum(c... " />
+            <marker date="1489729404183" expanded="true" signature="21482:21908" ph="SELECT sum(c... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/view_filter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="58" column="27" lean-forward="false" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="35" />
+          <folding>
+            <marker date="1489729958901" expanded="true" signature="240:486" ph="select UNIX_... registros" />
+            <marker date="1489729958901" expanded="true" signature="669:916" ph="select UNIX_... registros" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/dispositivos/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="30" column="48" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="30" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/site/index__user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="92" column="56" lean-forward="true" selection-start-line="92" selection-start-column="56" selection-end-line="92" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
