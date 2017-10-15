@@ -1,13 +1,7 @@
-<?php
-if(isset($cliente)){
-    $persona = $cliente->personases[0];
-}
-?>
-
 <!-- Page Heading Start -->
 <?php if(isset($cliente)){ ?>
     <div class="page-heading">
-        <h1><i class='fa fa-users'></i> Estaciones <small>- <?php echo $persona->nombre ?> <?php echo $persona->apellido ?> [<?php echo $persona->identificacion ?>]</small></h1>
+        <h1><i class='fa fa-users'></i> Estaciones <small>- <?php echo $cliente->razon_social ?> [<?php echo $cliente->nit ?>]</small></h1>
         <h3>Listado de estaciones</h3>
     </div>
 <?php }
@@ -53,17 +47,27 @@ else{ ?>
                         </tfoot>
                         <tbody>
                         <?php foreach ($estaciones as $key => $estacion) {
-                            $itemID = 'estacion_tr_'.$key;
-                            $cliente = $estacion->usuario0->personases[0];
+                                $itemID = 'estacion_tr_'.$key;
+                                $cliente = $estacion->cliente0;
                             ?>
                             <tr id="<?php echo $itemID; ?>">
                                 <td><?php echo $key+1; ?></td>
                                 <?php if(Yii::app()->user->getState('_userRol') == 1){ ?>
-                                    <td>[<?php echo $cliente->identificacion; ?>] <?php echo $cliente->nombre; ?> <?php echo $cliente->apellido; ?></td>
+                                    <td>
+                                        [<?php echo $cliente->nit; ?>] <?php echo $cliente->razon_social; ?>
+                                    </td>
                                 <?php } ?>
-                                <td><?php echo $estacion->nombre; ?></td>
+                                <td>
+                                    <?php echo $estacion->nombre; ?>
+                                    <?php if(!$estacion->registroCompleto()){ ?>
+                                        <span class="label label-danger">Registro por completar</span>
+                                    <?php } ?>
+                                </td>
                                 <td>
                                     <div class="btn-group btn-group-xs">
+                                        <?php if(!$estacion->registroCompleto()){ ?>
+                                            <a href="<?php echo $this->createUrl('estaciones/create_operacion_sitio?site='.$estacion->id) ?>" data-toggle="tooltip" title="Completar registro" class="btn btn-default"><i class="fa fa-code-fork"></i></a>
+                                        <?php } ?>
                                         <a href="<?php echo $this->createUrl('estaciones/'.$estacion->id) ?>" data-toggle="tooltip" title="Dispositivos" class="btn btn-default"><i class="fa fa-bolt"></i></a>
                                     </div>
                                 </td>

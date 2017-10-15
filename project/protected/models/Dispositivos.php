@@ -5,12 +5,14 @@
  *
  * The followings are the available columns in table 'dispositivos':
  * @property integer $id
- * @property integer $estacion
+ * @property integer $site
  * @property string $llave
  * @property string $nombre
+ * @property string $fecha_instalacion
+ * @property string $fecha_registro
  *
  * The followings are the available model relations:
- * @property Estaciones $estacion0
+ * @property Sites $site0
  * @property Registros[] $registroses
  */
 class Dispositivos extends CActiveRecord
@@ -31,13 +33,13 @@ class Dispositivos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('estacion, llave, nombre', 'required'),
-			array('estacion', 'numerical', 'integerOnly'=>true),
+			array('site, llave, nombre, fecha_instalacion, fecha_registro', 'required'),
+			array('site', 'numerical', 'integerOnly'=>true),
 			array('llave', 'length', 'max'=>65),
 			array('nombre', 'length', 'max'=>155),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, estacion, llave, nombre', 'safe', 'on'=>'search'),
+			array('id, site, llave, nombre, fecha_instalacion, fecha_registro', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,7 +51,7 @@ class Dispositivos extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'estacion0' => array(self::BELONGS_TO, 'Estaciones', 'estacion'),
+			'site0' => array(self::BELONGS_TO, 'Sites', 'site'),
 			'registroses' => array(self::HAS_MANY, 'Registros', 'dispositivo'),
 		);
 	}
@@ -61,9 +63,11 @@ class Dispositivos extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'estacion' => 'Estacion',
+			'site' => 'Site',
 			'llave' => 'Llave',
 			'nombre' => 'Nombre',
+			'fecha_instalacion' => 'Fecha Instalacion',
+			'fecha_registro' => 'Fecha Registro',
 		);
 	}
 
@@ -86,9 +90,11 @@ class Dispositivos extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('estacion',$this->estacion);
+		$criteria->compare('site',$this->site);
 		$criteria->compare('llave',$this->llave,true);
 		$criteria->compare('nombre',$this->nombre,true);
+		$criteria->compare('fecha_instalacion',$this->fecha_instalacion,true);
+		$criteria->compare('fecha_registro',$this->fecha_registro,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

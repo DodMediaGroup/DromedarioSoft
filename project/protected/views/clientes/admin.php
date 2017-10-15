@@ -20,37 +20,36 @@
 						<thead>
 							<tr>
 								<th>No.</th>
-								<th>Identificación</th>
-								<th>Nombres</th>
-								<th>Apellidos</th>
-								<th>Email</th>
-								<th>Estaciones</th>
+                                <th>Razon Social</th>
+                                <th>NIT</th>
+                                <th>Ciudad</th>
+                                <th>Teléfono</th>
+                                <th>Representante Legal</th>
 								<th>Opciones</th>
 							</tr>
 						</thead>
 						<tfoot>
 							<tr>
-								<th>No.</th>
-								<th>Identificación</th>
-								<th>Nombres</th>
-								<th>Apellidos</th>
-								<th>Email</th>
-								<th>Estaciones</th>
-								<th>Opciones</th>
+                                <th>No.</th>
+                                <th>Razon Social</th>
+                                <th>NIT</th>
+                                <th>Ciudad</th>
+                                <th>Teléfono</th>
+                                <th>Representante Legal</th>
+                                <th>Opciones</th>
 							</tr>
 						</tfoot>
 						<tbody>
 							<?php foreach ($clientes as $key => $cliente) {
 								$itemID = 'cliente_tr_'.$key;
-								$persona = $cliente->personases[0];
 							?>
 								<tr id="<?php echo $itemID; ?>">
 									<td><?php echo $key+1; ?></td>
-									<td><?php echo $persona->identificacion; ?></td>
-									<td><?php echo $persona->nombre; ?></td>
-									<td><?php echo $persona->apellido; ?></td>
-									<td><a href="mailto:<?php echo $cliente->email; ?>"><?php echo $cliente->email; ?></a></td>
-									<td><?php echo count($cliente->estaciones); ?></td>
+									<td><?php echo $cliente->razon_social; ?></td>
+									<td><?php echo $cliente->nit; ?></td>
+									<td><?php echo $cliente->municipio0->nombre; ?></td>
+									<td><?php echo $cliente->telefono; ?></td>
+									<td><?php echo $cliente->representanteLegal->nombre; ?></td>
 									<td>
 										<div class="btn-group btn-group-xs">
 											<a href="<?php echo $this->createUrl('clientes/estaciones/'.$cliente->id) ?>" data-toggle="tooltip" title="Estaciones" class="btn btn-default"><i class="fa fa-building-o"></i></a>

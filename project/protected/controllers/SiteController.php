@@ -55,7 +55,7 @@ class SiteController extends Controller
 
                 $consumo = $registro = MyMethods::querySql('SELECT
                         sum(r.corriente_1 + r.corriente_2 + r.corriente_3) as consumo
-                    FROM dod_dromedario_hardware.registros r
+                    FROM registros r
                     inner join dispositivos d on r.dispositivo=d.id
                     inner join estaciones e on d.estacion=e.id
                     where e.usuario = '.Yii::app()->user->getState('_userId').'
@@ -98,11 +98,11 @@ class SiteController extends Controller
 
 	public function actionDeviceTest(){
 		$cant = 50;
-		while ($cant > 0) {
+		/*while ($cant > 0) {
 			set_time_limit(20);
 
 			$registro = new Registros;
-			$registro->dispositivo = 2;
+			$registro->dispositivo = 5;
 			$registro->corriente_1 = (0 + (rand(1,100) / 100));
 			$registro->corriente_2 = (0 + (rand(1,100) / 100));
 			$registro->corriente_3 = (0 + (rand(1,100) / 100));
@@ -111,7 +111,7 @@ class SiteController extends Controller
 			$cant--;
 
 			sleep(rand(12,15));
-		}
+		}*/
 
 		//$segundos = 300;
 		/*$segundos = 3600*24*35;

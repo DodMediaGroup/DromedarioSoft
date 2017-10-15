@@ -19,6 +19,10 @@ jQuery(document).ready(function($) {
                     options.data = {csv: json.csv, lineDelimiter: ';'};
                 else
                     options.series = json;
+
+                if(highchart.is('[data-detail]'))
+                    highchartLiveTotalData = JSON.parse(JSON.stringify(json));
+
                 $.createHighChart(highchart, options);
             });
         }

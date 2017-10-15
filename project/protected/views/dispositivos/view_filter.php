@@ -89,7 +89,37 @@
     <div class="col-md-12">
         <div class="widget">
             <div class="widget-header">
-                <h2><strong>Tendencia de Consumo </strong> de <?php echo $dispositivo->nombre; ?></h2>
+                <h2><strong>Consumo Total </strong> de <?php echo $dispositivo->nombre; ?></h2>
+                <div class="additional-btn">
+                    <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                </div>
+            </div>
+            <div class="widget-content padding">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <highchart
+                                id="highchart-filter__total"
+                                type="stockChart"
+                                data__url="<?php echo $this->createUrl('dispositivos/getConsumoLiveTotal/'.$dispositivo->id.$dateFilter['query']); ?>"
+                                data-detail
+                        >
+
+                        </highchart>
+                    </div>
+                    <div id="live__total__data-detail" class="col-sm-3">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <h2><strong>Consumo </strong> de <?php echo $dispositivo->nombre; ?></h2>
                 <div class="additional-btn">
                     <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
                 </div>
@@ -100,7 +130,6 @@
                     type="stockChart"
                     data__url="<?php echo $this->createUrl('dispositivos/getConsumoTotal/'.$dispositivo->id.$dateFilter['query']); ?>"
                     data__filter="corriente_1, corriente_2, corriente_3"
-                    moment
                 >
 
                 </highchart>

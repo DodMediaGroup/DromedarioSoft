@@ -6,7 +6,9 @@
 <!-- Page Heading End-->
 
 <?php $this->renderPartial('_form', array(
-										'model'=>$model,
-										'modelPersona'=>$modelPersona,
-										'modelPassword'=>$modelPassword
-									)); ?>
+    'model'=>$model,
+    'modelCliente'=>$modelCliente,
+    'modelRepresentanteLegal'=>$modelRepresentanteLegal,
+    'modelResponsablePrograma'=>$modelResponsablePrograma,
+    'modelPassword'=>$modelPassword
+)); ?>

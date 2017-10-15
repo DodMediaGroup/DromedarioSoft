@@ -22,6 +22,7 @@
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/pace/pace.css" rel="stylesheet" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/sortable/sortable-theme-bootstrap.css" rel="stylesheet" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/jquery-icheck/skins/all.css" rel="stylesheet" />
     <!-- Code Highlighter for Demo -->
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/prettify/github.css" rel="stylesheet" />
@@ -77,6 +78,7 @@
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/magnific-popup/jquery.magnific-popup.min.js"></script> 
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/pace/pace.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/jquery-icheck/icheck.min.js"></script>
 
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap-calendar/js/bic_calendar.min.js"></script>

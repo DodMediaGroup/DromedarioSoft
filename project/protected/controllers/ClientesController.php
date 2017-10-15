@@ -40,9 +40,10 @@ class ClientesController extends Controller
 	}
 
 	public function actionAdmin(){
-		$clientes = Usuarios::model()->findAllByAttributes(
+		/*$clientes = Usuarios::model()->findAllByAttributes(
 											array('rol'=>2),
-											array('condition'=>'t.estado != 2'));
+											array('condition'=>'t.estado != 2'));*/
+		$clientes = Clientes::model()->findAll();
 
 		$this->render('admin', array(
 			'clientes'=>$clientes
@@ -54,9 +55,11 @@ class ClientesController extends Controller
 		$load->registerScriptFile(Yii::app()->request->baseUrl.'/js/modules/clientes.js',CClientScript::POS_END);
 
 
-		$model = new Usuarios;
-		$modelPersona = new Personas;
-		$modelPassword = new UsuarioPasswords;
+		$model = new Usuarios();
+		$modelCliente = new Clientes();
+		$modelRepresentanteLegal = new ClientesPersonas();
+		$modelResponsablePrograma = new ClientesPersonas();
+		$modelPassword = new UsuarioPasswords();
 
 		$passDefault = 'Dromedario_'.rand(100, 1000);
 		$modelPassword->password = $passDefault;
@@ -64,62 +67,91 @@ class ClientesController extends Controller
 
 		$this->render('create', array(
 			'model'=>$model,
-			'modelPersona'=>$modelPersona,
+			'modelCliente'=>$modelCliente,
+			'modelRepresentanteLegal'=>$modelRepresentanteLegal,
+			'modelResponsablePrograma'=>$modelResponsablePrograma,
 			'modelPassword'=>$modelPassword
 		));
 	}
 	public function actionCreate__ajax(){
-		if(Yii::app()->getRequest()->getIsAjaxRequest() && isset($_POST['Personas'])){
-			$response = array('status'=>'error');
+		if(Yii::app()->getRequest()->getIsAjaxRequest() && isset($_POST['Clientes'])){
+			$response = array(
+			    'status'=>'error',
+                'title'=> 'Error validación',
+                'message'=>'Error en la validación de los datos!!!'
+            );
 			$error = false;
 
-			$model = new Usuarios;
-			$modelPersona = new Personas;
-			$modelPassword = new UsuarioPasswords;
+            $model = new Usuarios();
 
-			$model->attributes = $_POST['Usuarios'];
-			$model->usuario = $_POST['Personas']['nombre'].$_POST['Personas']['apellido'];
-			$model->rol = 2;
+            $model->attributes = $_POST['Usuarios'];
+            $model->usuario = $_POST['Clientes']['razon_social'];
+            $model->rol = 2;
 
-			$user = Usuarios::model()->findByAttributes(array('email'=>$model->email));
-			if($user != null){
-				$response['title'] = 'Error validación';
-            	$response['message'] = 'Ya existe un usuario con este email';
-			}
-			else if($model->validate(null, false)){
-				$modelPersona->attributes = $_POST['Personas'];
-				$modelPersona->usuario = 0;
-				if($modelPersona->validate(null, false)){
-					$modelPassword->attributes = $_POST['UsuarioPasswords'];
-					$modelPassword->usuario = 0;
-					if($modelPassword->validate(null, false)){
-						if($model->save()){
-							$modelPersona->usuario = $model->id;
-							
-							$modelPassword->usuario = $model->id;
-							$modelPassword->password = MyMethods::crypt_blowfish($modelPassword->password);
-							
-							$modelPersona->save();
-							$modelPassword->save();
+            $currentUser = Usuarios::model()->findByAttributes(array(
+                'email'=>$model->email
+            ));
 
-							$response['title'] = 'Echo';
-			            	$response['message'] = 'El cliente se agrego con exito.';
-			            	$response['status'] = 'success';
-						}
-					}
-					else{
-						$response['title'] = 'Error validación';
-            			$response['message'] = 'Verifique los campos de "Datos de acceso"';
-					}
-				}
-				else{
-					$response['title'] = 'Error validación';
-            		$response['message'] = 'Verifique los campos de "Información personal"';
-				}
-			}
-			else{
-            	$response['title'] = 'Error validación';
-            	$response['message'] = 'Verifique los campos de "Datos de acceso"';
+            if($currentUser != null){
+                $response['message'] = 'Ya existe un usuario con este email';
+            }
+            else{
+                $modelPassword = new UsuarioPasswords();
+                $modelPassword->password = MyMethods::crypt_blowfish($_POST['UsuarioPasswords']['password']);
+                $modelPassword->usuario = 0;
+
+                if($model->validate(null, false) && $modelPassword->validate(null, false)){
+                    if(isset($_POST['Clientes']) && isset($_POST['ClientesPersonas']) && count($_POST['ClientesPersonas']) >= 2){
+                        $modelCliente = new Clientes();
+                        $modelRepresentanteLegal = new ClientesPersonas();
+                        $modelResponsablePrograma = new ClientesPersonas();
+
+                        $modelResponsablePrograma->attributes = $_POST['ClientesPersonas'][1];
+                        if(!$modelResponsablePrograma->validate(null, false)){
+                            $response['message'] = 'Error en la validación de los datos del responsable acompañamiento del programa PSG';
+                            $error = true;
+                        }
+
+                        $modelRepresentanteLegal->attributes = $_POST['ClientesPersonas'][0];
+                        if(!$modelRepresentanteLegal->validate(null, false)){
+                            $response['message'] = 'Error en la validación de los datos del representante legal';
+                            $error = true;
+                        }
+
+                        $modelCliente->attributes = $_POST['Clientes'];
+                        $modelCliente->usuario = 0;
+                        $modelCliente->representante_legal = 0;
+                        $modelCliente->responsable_programa_sge = 0;
+
+                        if(!$modelCliente->validate(null, false)){
+                            $response['message'] = 'Error en la validación de los datos de la empresa';
+                            $error = true;
+                        }
+
+                        if(!$error){
+                            $model->save();
+
+                            $modelPassword->usuario = $model->id;
+                            $modelPassword->save();
+
+                            $modelRepresentanteLegal->save();
+                            $modelResponsablePrograma->save();
+
+                            $modelCliente->usuario = $model->id;
+                            $modelCliente->representante_legal = $modelRepresentanteLegal->id;
+                            $modelCliente->responsable_programa_sge = $modelResponsablePrograma->id;
+                            $modelCliente->save();
+
+                            $response['title'] = 'Hecho';
+                            $response['message'] = 'El cliente se agrego con exito.';
+                            $response['status'] = 'success';
+                            $response['new'] = $modelCliente->id;
+                        }
+                    }
+                }
+                else{
+                    $response['message'] = 'Verifique los campos de "Datos de acceso"';
+                }
             }
 
 			echo CJSON::encode($response);
@@ -132,7 +164,9 @@ class ClientesController extends Controller
 
 	public function actionEstaciones($id){
 		$cliente = $this->loadModel($id);
-		$estaciones = Estaciones::model()->findAllByAttributes(array('usuario'=>$cliente->id));
+		$estaciones = SitesExtend::model()->findAllByAttributes(array(
+		    'cliente'=>$cliente->id
+        ));
 
 		$this->render('//estaciones/admin', array(
 			'cliente'=>$cliente,
@@ -146,13 +180,15 @@ class ClientesController extends Controller
 		if(Yii::app()->getRequest()->getIsAjaxRequest() && isset($_GET['term'])){
 			$response = array();
 
-			$clientes = Personas::model()->findAll(array('condition'=>'t.identificacion LIKE "%'.$_GET['term'].'%" OR t.nombre LIKE "%'.$_GET['term'].'%" OR t.apellido LIKE "%'.$_GET['term'].'%"'));
+			$clientes = Clientes::model()->findAll(array(
+			    'condition'=>'t.nit LIKE "%'.$_GET['term'].'%" OR t.razon_social LIKE "%'.$_GET['term'].'%"'
+            ));
 
 			foreach ($clientes as $key => $cliente) {
 				$response[] = array(
-					'id'=>$cliente->usuario,
-					'label'=>'['.$cliente->identificacion.'] '.$cliente->nombre.' '.$cliente->apellido,
-					'value'=>$cliente->identificacion
+					'id'=>$cliente->id,
+					'label'=>'['.$cliente->nit.'] '.$cliente->razon_social,
+					'value'=>$cliente->nit
 				);
 			}
 
@@ -171,7 +207,9 @@ class ClientesController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model = Usuarios::model()->findByAttributes(array('id'=>$id), array('condition'=>'t.estado != 2'));
+		$model = Clientes::model()->findByAttributes(array(
+		    'id'=>$id
+        ), array());
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

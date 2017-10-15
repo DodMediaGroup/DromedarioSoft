@@ -192,9 +192,15 @@ $.sendFormAjax = function($form){
 	})
 	.done(function($data) {
 		$.showNotify($data.title, $data.message, $data.status);
-		if($data.status == 'success')
-			if($form.is("[data-form__success]") && $form.attr('data-form__success') != '')
+		if($data.status == 'success'){
+			if($form.is("[data-form__redirect]") && $form.attr('data-form__redirect') != ''){
+                setTimeout(function(){
+                    location.href = $form.attr('data-form__redirect')+$data.new;
+                }, 1000);
+            }
+			else if($form.is("[data-form__success]") && $form.attr('data-form__success') != '')
 				eval($form.attr('data-form__success'));
+        }
 	})
 	.fail(function() {
 		$.showNotify('Error', 'Ocurrio un error durante la conexión con el servidor. Intente mas tarde!!!', 'error');

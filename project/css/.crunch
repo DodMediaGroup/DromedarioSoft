@@ -1,0 +1,48 @@
+{
+	"files": {
+		"main.less": {
+			"engines": [
+				{
+					"compiler": "less",
+					"output": "main.css",
+					"options": {
+						"compress": true,
+						"ieCompat": true,
+						"strictMath": false,
+						"strictUnits": false,
+						"javascriptEnabled": false,
+						"sourceMap": true
+					}
+				}
+			],
+			"sources": [
+				"components.less",
+				"components/forms.less",
+				"components/grapic__genre.less",
+				"components/highcharts.less",
+				"components/images.less",
+				"components/modals.less",
+				"components/numbertoletters.less",
+				"components/opacity.less",
+				"components/texts.less",
+				"components/tickets.less",
+				"components/widget__client.less",
+				"config.less",
+				"config/basic.less",
+				"config/palette.less",
+				"config/variables.less",
+				"layouts.less",
+				"layouts/_grid.less",
+				"layouts/print.less",
+				"layouts/sidebar__left.less",
+				"modules.less",
+				"modules/campanias.less",
+				"modules/dispositivos.less",
+				"modules/reports.less",
+				"template/style-responsive.less",
+				"template/style.less",
+				"template/template__mod.less"
+			]
+		}
+	}
+}

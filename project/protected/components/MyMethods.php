@@ -265,6 +265,35 @@ class MyMethods extends CApplicationComponent
 		return $_items;
 	}
 
+	public static function doListModels($models, $key='', $value=''){
+	    $items = array();
+	    if(count($models) > 0)
+	        $items[null] = '--- Seleccione una opción ---';
+	    else
+            $items[null] = 'No hay disponibles';
+
+	    foreach ($models as $model){
+	        $items[$model->$key] = $model->$value;
+        }
+
+        return $items;
+    }
+
+
+    public static function doListHours(){
+	    $items = array();
+	    for ($i = 0; $i < 24; $i++){
+	        $key = str_pad($i, 2, "0", STR_PAD_LEFT).':00:00';
+	        $hour = (($i < 12)?$i:($i-12));
+	        if($hour == 0)
+	            $hour = 12;
+	        $items[$key] = str_pad($hour, 2, "0", STR_PAD_LEFT).':00 '.(($i < 12)?'AM':'PM');
+        }
+	    return $items;
+    }
+
+	/*************************************************************/
+
 	public static function hasPermission($permission){
 		$user = Usuarios::model()->findByAttributes(array('id_usuario'=>Yii::app()->user->getState('_idUser'), 'estatus_usuario'=>1));
 

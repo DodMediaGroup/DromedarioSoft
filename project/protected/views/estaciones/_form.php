@@ -6,7 +6,7 @@
         'class'=>'form__ajax',
         'role'=>'form',
         'method'=>'post',
-        'data-form__success'=>($model->isNewRecord)?'$.formClear($form)':'',
+        'data-form__redirect'=>($model->isNewRecord)?$this->createUrl('estaciones/create_operacion_sitio').'?site=':'',
     ),
 )); ?>
 
@@ -23,9 +23,9 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Identificación Cliente *</label>
-                                <?php echo $form->hiddenField($model, 'usuario', array('required'=>true)); ?>
-                                <input type="text" class="input__autocomplete form-control" required data-autocomplete__data="<?php echo $this->createUrl('clientes/autocomplete__json'); ?>" data-autocomplete__input="#Estaciones_usuario">
+                                <label>Nit Cliente *</label>
+                                <?php echo $form->hiddenField($model, 'cliente', array('required'=>true)); ?>
+                                <input value="<?php echo $cliente['nombre']; ?>" type="text" class="input__autocomplete form-control" required data-autocomplete__data="<?php echo $this->createUrl('clientes/autocomplete__json'); ?>" data-autocomplete__input="#Sites_cliente">
                             </div>
                         </div>
                         <div class="col-sm-6">

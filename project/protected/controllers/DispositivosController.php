@@ -25,7 +25,7 @@ class DispositivosController extends Controller
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array(
-					//'admin',
+					'admin',
 					'view',
 
 					'getConsumo',
@@ -35,11 +35,16 @@ class DispositivosController extends Controller
 
                     'getConsumoTotal',
 
+                    'getConsumoLastDay',
+                    'getConsumoLastWeekLine',
                     'getConsumoLastWeek',
+                    'getConsumoLastMonthLine',
                     'getConsumoLastMonth',
 
 					'getConsumoDays',
-					'getConsumoHours'
+					'getConsumoHours',
+
+                    'getConsumoEconomico'
 				),
 				'users'=>array('@'),
 			),
@@ -60,7 +65,9 @@ class DispositivosController extends Controller
 		if(Yii::app()->user->getState('_userRol') == 1)
 			$dispositivos = Dispositivos::model()->findAll();
 		else
-			$dispositivos = Dispositivos::model()->findAllByAttributes(array('usuario'=>Yii::app()->user->getState('_userId')));
+			$dispositivos = Dispositivos::model()->findAllByAttributes(array(
+			    'usuario'=>Yii::app()->user->getState('_userId')
+            ));
 
 		$this->render('admin', array(
 			'dispositivos'=>$dispositivos
@@ -85,6 +92,7 @@ class DispositivosController extends Controller
 
 			$model = new Dispositivos;
 			$model->attributes = $_POST['Dispositivos'];
+			$model->fecha_registro = new CDbExpression('NOW()');
 
 			$generarLlave = true;
 			while ($generarLlave) {
@@ -119,7 +127,7 @@ class DispositivosController extends Controller
         $load->registerScriptFile(Yii::app()->request->baseUrl.'/js/modules/dispositivos.js',CClientScript::POS_END);
 
 		$dispositivo = $this->loadModel($id);
-		$persona = $dispositivo->estacion0->usuario0->personases[0];
+		$cliente = $dispositivo->site0->cliente0;
 
 		if(isset($_GET['from']) && isset($_GET['to'])){
 		    $dateFrom = null;
@@ -157,15 +165,17 @@ class DispositivosController extends Controller
         if(isset($dateFilter['query'])){
             $queryDate = '';
             if(isset($_GET['from']))
-                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) >= '.$_GET['from'];
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d %H:%i")) >= '.$_GET['from'];
             if(isset($_GET['to']))
-                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) <= '.$_GET['to'];
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d %H:%i")) <= '.$_GET['to'];
 
-            $registro = MyMethods::querySql('select
+            $registro = MyMethods::querySql('SELECT
                 (sum(corriente_1) + sum(corriente_2) + sum(corriente_3)) as total,
                 (sum(corriente_1)) as corriente_1,
                 (sum(corriente_2)) as corriente_2,
-                (sum(corriente_3)) as corriente_3
+                (sum(corriente_3)) as corriente_3,
+                date_format(FROM_UNIXTIME('.$_GET['from'].'), "%m/%d/%Y %H:%i") as dateFrom,
+                date_format(FROM_UNIXTIME('.$_GET['to'].'), "%m/%d/%Y %H:%i") as dateTo
                 FROM registros
                 WHERE
                     dispositivo = '.$dispositivo->id.
@@ -175,7 +185,7 @@ class DispositivosController extends Controller
 
 		$this->render('view', array(
 			'dispositivo'=>$dispositivo,
-			'persona'=>$persona,
+			'cliente'=>$cliente,
 
             'dateFilter'=>$dateFilter
 		));
@@ -288,32 +298,70 @@ class DispositivosController extends Controller
         if(isset($_GET['id'])){
             $dispositivo = $this->loadModel($_GET['id']);
 
-            $charSerie = array();
-            $acomulado = [];
-
-            if(!isset($_GET['last'])){
-                $registros = MyMethods::querySql('SELECT id, corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND fecha > DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 10 MINUTE) ORDER BY fecha ASC');
-
-                if(count($registros) == 0){
-                    $lastRegistro = Registros::model()->findByAttributes(array('dispositivo'=>$dispositivo->id), array('order'=>'t.fecha DESC', 'limit'=>1));
-                    if($lastRegistro != null){
-                        $registros = MyMethods::querySql('SELECT id, corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND fecha > DATE_SUB("'.$lastRegistro->fecha.'", INTERVAL 10 MINUTE) ORDER BY fecha ASC');
-                    }
-                }
-            }
-            else{
-                $registros = MyMethods::querySql('SELECT id, corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND UNIX_TIMESTAMP(fecha) > "'.($_GET['last'] / 1000).'"');
-            }
+            $queryDate = '';
+            if(isset($_GET['from']))
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d %H:%i")) >= '.$_GET['from'];
+            if(isset($_GET['to']))
+                $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d %H:%i")) <= '.$_GET['to'];
 
             $response = array(array(
                 'name'=>'Total',
                 'data'=>array()
             ));
-            foreach($registros as $key=>$registro){
-                $response[0]['data'][] = array(
-                    'x'=>$registro['fecha']*1000,
-                    'y'=>($registro['corriente_1']+$registro['corriente_2']+$registro['corriente_3'])
-                );
+
+            if($queryDate == ''){
+                if(!isset($_GET['last'])){
+                    $registros = MyMethods::querySql('
+                    SELECT
+                        id,
+                        corriente_1,
+                        corriente_2,
+                        corriente_3,
+                        UNIX_TIMESTAMP(fecha) AS fecha
+                    FROM registros
+                    WHERE
+                        dispositivo = '.$dispositivo->id.' AND
+                        fecha > DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 10 MINUTE)
+                    ORDER BY fecha ASC');
+
+                    if(count($registros) == 0){
+                        $lastRegistro = Registros::model()->findByAttributes(array('dispositivo'=>$dispositivo->id), array('order'=>'t.fecha DESC', 'limit'=>1));
+                        if($lastRegistro != null){
+                            $registros = MyMethods::querySql('SELECT id, corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND fecha > DATE_SUB("'.$lastRegistro->fecha.'", INTERVAL 10 MINUTE) ORDER BY fecha ASC');
+                        }
+                    }
+                }
+                else{
+                    $registros = MyMethods::querySql('SELECT id, corriente_1, corriente_2, corriente_3, UNIX_TIMESTAMP(fecha) AS fecha FROM registros WHERE dispositivo = '.$dispositivo->id.' AND UNIX_TIMESTAMP(fecha) > "'.($_GET['last'] / 1000).'"');
+                }
+
+                foreach($registros as $key=>$registro){
+                    $response[0]['data'][] = array(
+                        'x'=>$registro['fecha']*1000,
+                        'y'=>($registro['corriente_1']+$registro['corriente_2']+$registro['corriente_3'])
+                    );
+                }
+            }
+            else{
+                $registros = MyMethods::querySql('
+                    SELECT
+                        id,
+                        (sum(corriente_1)) as corriente_1,
+                        (sum(corriente_2)) as corriente_2,
+                        (sum(corriente_3)) as corriente_3,
+                        UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d %H")) as fecha
+                    FROM registros
+                    WHERE
+                        dispositivo = '.$dispositivo->id.$queryDate.'
+                    GROUP BY date_format(fecha, "%Y-%m-%d %H")
+                    ORDER BY fecha ASC');
+
+                foreach($registros as $key=>$registro){
+                    $response[0]['data'][] = array(
+                        'x'=>($registro['fecha']*1000),
+                        'y'=>(floatval($registro['corriente_1']+$registro['corriente_2']+$registro['corriente_3']))
+                    );
+                }
             }
 
             echo CJSON::encode($response);
@@ -337,9 +385,9 @@ class DispositivosController extends Controller
                 $queryDate .= ' AND UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d")) <= '.$_GET['to'];
 
             $registros = MyMethods::querySql('select 
-                (sum(corriente_1) / count(*)) as corriente_1,
-                (sum(corriente_2) / count(*)) as corriente_2,
-                (sum(corriente_3) / count(*)) as corriente_3,
+                (sum(corriente_1)) as corriente_1,
+                (sum(corriente_2)) as corriente_2,
+                (sum(corriente_3)) as corriente_3,
                 UNIX_TIMESTAMP(date_format(fecha, "%Y-%m-%d %H")) as fecha
                 FROM registros
                 WHERE
@@ -358,41 +406,150 @@ class DispositivosController extends Controller
             throw new CHttpException(404,'The requested page does not exist.');
     }
 
+    public function actionGetConsumoLastDay(){
+        if(isset($_GET['id'])){
+            $dispositivo = $this->loadModel($_GET['id']);
+
+            $hours = array();
+            for($i = 0; $i < 24; $i++){
+                $hours[] = $i.":00";
+            }
+            $charSerie = array(
+                'series'=>array(
+                    array(
+                        'name'=>'Corriente_1',
+                        'data'=>[]
+                    ),
+                    array(
+                        'name'=>'Corriente_2',
+                        'data'=>[]
+                    ),
+                    array(
+                        'name'=>'Corriente_3',
+                        'data'=>[]
+                    )
+                ),
+                'xAxis'=> array(
+                    'categories'=>$hours,
+                )
+            );
+            for($i = 0; $i < count($charSerie['series']); $i++) {
+                for($j = 0; $j < count($hours); $j++) {
+                    $charSerie['series'][$i]['data'][] = 0.0;
+                }
+            }
+
+            $registros = MyMethods::querySql('SELECT 
+                sum(corriente_1) as corriente_1,
+                sum(corriente_2) as corriente_2,
+                sum(corriente_3) as corriente_3,
+                date_format(fecha, "%k") as hour
+                FROM registros
+                where
+                  dispositivo = '.$dispositivo->id.' AND
+                  date_format(fecha, "%Y-%m-%d") = date_format(date_sub(now(), interval 1 DAY), "%Y-%m-%d")
+                group by hour;
+            ');
+
+            foreach ($registros as $key=>$registro){
+                $charSerie['series'][0]['data'][$registro['hour']] = floatval($registro['corriente_1']);
+                $charSerie['series'][1]['data'][$registro['hour']] = floatval($registro['corriente_2']);
+                $charSerie['series'][2]['data'][$registro['hour']] = floatval($registro['corriente_3']);
+            }
+
+            echo CJSON::encode(array('options'=>$charSerie));
+        }
+	    else
+            throw new CHttpException(404,'The requested page does not exist.');
+    }
+
+    public function actionGetConsumoLastWeekLine(){
+        if(isset($_GET['id'])){
+            $dispositivo = $this->loadModel($_GET['id']);
+
+            $days = array('Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado');
+            $charSerie = array(
+                'series'=>array(
+                    array(
+                        'name'=>'Corriente_1',
+                        'data'=>[]
+                    ),
+                    array(
+                        'name'=>'Corriente_2',
+                        'data'=>[]
+                    ),
+                    array(
+                        'name'=>'Corriente_3',
+                        'data'=>[]
+                    )
+                ),
+                'xAxis'=> array(
+                    'categories'=>$days,
+                )
+            );
+            for($i = 0; $i < count($charSerie['series']); $i++) {
+                for($j = 0; $j < count($days); $j++) {
+                    $charSerie['series'][$i]['data'][] = 0.0;
+                }
+            }
+
+            $registros = MyMethods::querySql('SELECT
+                sum(corriente_1) as corriente_1,
+                sum(corriente_2) as corriente_2,
+                sum(corriente_3) as corriente_3,
+                date_format(fecha, "%w") as dia
+                FROM registros
+                where
+                  dispositivo = '.$dispositivo->id.' AND
+                  date_format(fecha, "%U[%Y]") = concat((date_format(now(), "%U") - 1), date_format(now(), "[%Y]"))
+                group by dia;
+            ');
+
+            foreach ($registros as $key=>$registro){
+                $charSerie['series'][0]['data'][$registro['dia']] = floatval($registro['corriente_1']);
+                $charSerie['series'][1]['data'][$registro['dia']] = floatval($registro['corriente_2']);
+                $charSerie['series'][2]['data'][$registro['dia']] = floatval($registro['corriente_3']);
+            }
+
+            echo CJSON::encode(array('options'=>$charSerie));
+        }
+        else
+            throw new CHttpException(404,'The requested page does not exist.');
+    }
     public function actionGetConsumoLastWeek(){
         if(isset($_GET['id'])){
             $dispositivo = $this->loadModel($_GET['id']);
 
-            $lastDayWeek = 6; // Sabado
-
-            $dateMax = MyMethods::querySql('select date_format(fecha, "%Y-%m-%d") as fecha from registros where dispositivo = '.$dispositivo->id.' and date_format(fecha, "%w") = '.$lastDayWeek.' order by fecha desc limit 1;');
-            $dateMax = $dateMax[0];
-
-            $dateMin = MyMethods::querySql('select DATE_SUB("'.$dateMax['fecha'].'", INTERVAL 7 DAY) as fecha');
-            $dateMin = $dateMin[0];
-
-            $registros = MyMethods::querySql('select
+            $registros = MyMethods::querySql('SELECT
                 date_format(fecha, "%Y-%m-%d") as day,
                 date_format(fecha, "%k") as hour,
-                (sum(((corriente_1 + corriente_2 + corriente_3) / 3)) / count(*)) as promedio
-                from registros
-                where dispositivo = '.$dispositivo->id.' and date_format(fecha, "%Y-%m-%d") > "'.$dateMin['fecha'].'" and date_format(fecha, "%Y-%m-%d") <= "'.$dateMax['fecha'].'"
-                group by day, hour 
-                order by fecha ASC;');
+                sum(corriente_1 + corriente_2 + corriente_3) as promedio
+                FROM registros
+                where
+                  dispositivo = '.$dispositivo->id.' AND
+                  date_format(fecha, "%U[%Y]") = concat((date_format(now(), "%U") - 1), date_format(now(), "[%Y]"))
+                group by day, hour;
+            ');
+            $fechaSemana = MyMethods::querySql('
+                SELECT
+                    date_format(DATE_SUB(date_sub(now(), interval 7 day), INTERVAL DAYOFWEEK(date_sub(now(), interval 7 day))-1 DAY), "%Y-%m-%d") DOMINGO,
+	                date_format(DATE_ADD(date_sub(now(), interval 7 day), INTERVAL 7-DAYOFWEEK(date_sub(now(), interval 7 day)) DAY), "%Y-%m-%d") SABADO;
+            ');
 
 
             $response = array('Date, Time, Temperature');
             $responseAux = array();
 
-            $fechaAxi = $dateMin['fecha'];
+            $fechaAxi = $fechaSemana[0]['DOMINGO'];
 
             for($i = 0; $i < 7; $i++){
-                $fechaAxi = strtotime ( '+1 day' , strtotime ( $fechaAxi ) ) ;
-                $fechaAxi = date ( 'Y-m-j' , $fechaAxi );
-
                 $responseAux[$fechaAxi] = array();
                 for($j = 0; $j < 24; $j++){
                     $responseAux[$fechaAxi][] = array($fechaAxi, $j, 0);
                 }
+
+                $fechaAxi = strtotime ( '+1 day' , strtotime ( $fechaAxi ) ) ;
+                $fechaAxi = date ( 'Y-m-j' , $fechaAxi );
             }
 
             foreach ($registros as $key=>$registro){
@@ -411,6 +568,67 @@ class DispositivosController extends Controller
             throw new CHttpException(404,'The requested page does not exist.');
     }
 
+    public function actionGetConsumoLastMonthLine(){
+        if(isset($_GET['id'])) {
+            $dispositivo = $this->loadModel($_GET['id']);
+
+            $monthMySql = MyMethods::querySql('select date_format(date_sub(now(), interval 1 MONTH), "%Y-%m") as date;');
+            $monthMySql = explode('-', $monthMySql[0]['date']);
+
+            $days = cal_days_in_month(CAL_GREGORIAN, $monthMySql[1], $monthMySql[0]);
+            $daysArray = array();
+            for($i = 0; $i < $days; $i++) {
+                $daysArray[] = ($i+1).'/'.$monthMySql[1];
+            }
+            $charSerie = array(
+                'series'=>array(
+                    array(
+                        'name'=>'Corriente_1',
+                        'data'=>[]
+                    ),
+                    array(
+                        'name'=>'Corriente_2',
+                        'data'=>[]
+                    ),
+                    array(
+                        'name'=>'Corriente_3',
+                        'data'=>[]
+                    )
+                ),
+                'xAxis'=> array(
+                    'categories'=>$daysArray,
+                )
+            );
+
+            for($i = 0; $i < count($charSerie['series']); $i++) {
+                for($j = 0; $j < $days; $j++) {
+                    $charSerie['series'][$i]['data'][] = 0.0;
+                }
+            }
+
+            $registros = MyMethods::querySql('SELECT
+                sum(corriente_1) as corriente_1,
+                sum(corriente_2) as corriente_2,
+                sum(corriente_3) as corriente_3,
+                (date_format(fecha, "%d") - 1) as dia
+                FROM registros
+                where
+                  dispositivo = '.$dispositivo->id.' AND
+                  date_format(fecha, "%Y-%m") = date_format(date_sub(now(), interval 1 MONTH), "%Y-%m")
+                group by dia;
+            ');
+
+            foreach ($registros as $key=>$registro){
+                $charSerie['series'][0]['data'][$registro['dia']] = floatval($registro['corriente_1']);
+                $charSerie['series'][1]['data'][$registro['dia']] = floatval($registro['corriente_2']);
+                $charSerie['series'][2]['data'][$registro['dia']] = floatval($registro['corriente_3']);
+            }
+
+            echo CJSON::encode(array('options'=>$charSerie));
+        }
+        else
+            throw new CHttpException(404,'The requested page does not exist.');
+    }
     public function actionGetConsumoLastMonth(){
         if(isset($_GET['id'])){
             $dispositivo = $this->loadModel($_GET['id']);
@@ -457,7 +675,6 @@ class DispositivosController extends Controller
         else
             throw new CHttpException(404,'The requested page does not exist.');
     }
-
 
 	public function actionGetConsumoDays(){
 		if(isset($_GET['id'])){
@@ -579,6 +796,68 @@ class DispositivosController extends Controller
 		else
 			throw new CHttpException(404,'The requested page does not exist.');
 	}
+
+
+	public function actionGetConsumoEconomico(){
+        if(isset($_GET['id'])) {
+            $dispositivo = $this->loadModel($_GET['id']);
+
+            $meses = array();
+            $mesesArray = array();
+            $primerMes = MyMethods::querySql('SELECT
+                date_format("'.$dispositivo->fecha_registro.'", "%Y-%m") as fecha;
+            ');
+            $fechaSemana = MyMethods::querySql('SELECT
+                date_format(now(), "%Y-%m") as hoy;
+            ');
+            $fechaAxi = $primerMes[0]['fecha'];
+            $cont = true;
+            while($cont){
+                $meses[] = $fechaAxi;
+                $mesesArray[$fechaAxi] = 0;
+
+                if($fechaSemana[0]['hoy'] == $fechaAxi)
+                    $cont = false;
+
+                $fechaAxi = strtotime ( '+1 month' , strtotime ( $fechaAxi ) ) ;
+                $fechaAxi = date ( 'Y-m' , $fechaAxi );
+            }
+
+            $charSerie = array(
+                'series'=>array(
+                    array(
+                        'name'=>'Gasto',
+                        'data'=>[]
+                    )
+                ),
+                'xAxis'=> array(
+                    'categories'=>$meses,
+                )
+            );
+
+            $registros = MyMethods::querySql('SELECT
+                (sum(corriente_1) + sum(corriente_2) + sum(corriente_3)) as consumo,
+                date_format(fecha, "%Y-%m") as mes
+                FROM registros
+                WHERE
+                    dispositivo = '.$dispositivo->id.'
+                group by mes;
+            ');
+
+            foreach ($registros as $key=>$registro){
+                $mesesArray[$registro['mes']] = round($registro['consumo'], 4);
+            }
+            $i=0;
+            foreach ($mesesArray as $key=>$mes){
+                $charSerie['series'][0]['data'][$i] = $mes;
+                $i++;
+            }
+
+            echo CJSON::encode(array('options'=>$charSerie));
+        }
+        else
+            throw new CHttpException(404,'The requested page does not exist.');
+    }
 
 
 	private function createDataResponse($base, $registros){

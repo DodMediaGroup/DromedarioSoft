@@ -39,6 +39,7 @@ else{ ?>
 									<th>Llave</th>
 								<?php } ?>
 								<th>Nombre</th>
+								<th>Fecha Instalación</th>
 								<th>Opciones</th>
 							</tr>
 						</thead>
@@ -50,21 +51,23 @@ else{ ?>
 									<th>Llave</th>
 								<?php } ?>
 								<th>Nombre</th>
+                                <th>Fecha Instalación</th>
 								<th>Opciones</th>
 							</tr>
 						</tfoot>
 						<tbody>
 							<?php foreach ($dispositivos as $key => $dispositivo) {
 								$itemID = 'dispositivo_tr_'.$key;
-								$cliente = $dispositivo->usuario0->personases[0];
+								$cliente = $dispositivo->site0->cliente0;
 							?>
 								<tr id="<?php echo $itemID; ?>">
 									<td><?php echo $key+1; ?></td>
 									<?php if(Yii::app()->user->getState('_userRol') == 1){ ?>
-										<td>[<?php echo $cliente->identificacion; ?>] <?php echo $cliente->nombre; ?> <?php echo $cliente->apellido; ?></td>
+										<td>[<?php echo $cliente->nit; ?>] <?php echo $cliente->razon_social; ?></td>
 										<td><?php echo $dispositivo->llave; ?></td>
 									<?php } ?>
 									<td><?php echo $dispositivo->nombre; ?></td>
+									<td><?php echo $dispositivo->fecha_instalacion; ?></td>
 									<td>
 										<div class="btn-group btn-group-xs">
 											<a href="<?php echo $this->createUrl('dispositivos/'.$dispositivo->id) ?>" data-toggle="tooltip" title="Ver" class="btn btn-default"><i class="fa fa-search-plus"></i></a>

@@ -234,6 +234,16 @@ $('input[type=file]').bootstrapFileInput();
 
 //DATE PICKER
 $('.datepicker-input').datepicker();
+$('.datetimepicker-input').datetimepicker({
+    minuteStep: 30
+});
+
+// ACTIVAR CKEDITOR EN TEXTAREA
+$(".js-ckeditor").each(function(){
+    $(this).ckeditor({
+        skin : 'bootstrapck'
+    });
+});
 
 //AUTOCOMPLETE
 $('.input__autocomplete').on('keydown', function(event) {
@@ -467,14 +477,11 @@ $.readBeforeFile = function(input){
       $(content).append($('<div>', {
         class:"img"
       }).css('background-image', 'url('+e.target.result+')'));
-    }
+    };
     reader.readAsDataURL(input.files[0]);
   }
-}
+};
 
 $.isset = function($data){
-  if(typeof $data == "undefined" || $data == null)
-    return false
-  else
-    return true
-}
+  return !(typeof $data == "undefined" || $data == null);
+};

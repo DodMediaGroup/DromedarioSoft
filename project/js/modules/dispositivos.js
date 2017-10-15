@@ -57,25 +57,27 @@ var highChartsConf = {
                 marginRight: 10,
                 events: {
                     redraw: function(){
-                        var series = this.series;
-                        $.showDataDetail(series, '#live__total__data-detail');
-                        console.log(series);
+                        $.showDataDetailTotalLive(highchartLiveTotalData, '#live__total__data-detail');
                     },
                     load: function () {
                         var series = this.series;
-                        $.showDataDetail(series, '#live__total__data-detail');
+                        $.showDataDetailTotalLive(highchartLiveTotalData, '#live__total__data-detail');
                         setInterval(function () {
-                            var last = series[0].data[series[0].data.length - 1].x;
+                            var last = highchartLiveTotalData[0].data[highchartLiveTotalData[0].data.length - 1].x;
                             $.loadDataHighChart(highchart, function(json) {
                                 for(var i = 0; i < json.length; i++){
                                     var serie = series[i];
                                     var data = json[i].data || [];
                                     for(var j = 0; j < data.length; j++){
-                                        serie.addPoint(data[j], true, true);
+                                        highchartLiveTotalData[i].data.push(data[j]);
+                                        serie.addPoint($.formatPointValue(data[j]), true, true);
                                     }
+                                    //$.reDrawDataDetailTotalLive(serie);
                                 }
                             }, {last: last});
                         }, 10000);
+
+                        $.initControlDetailTotalLive(series[0]);
                     }
                 }
             },
@@ -139,7 +141,7 @@ var highChartsConf = {
         return {
             chart: {
                 animation: Highcharts.svg,
-                marginRight: 10,
+                marginRight: 10
             },
             exporting: {
                 enabled: true
@@ -148,7 +150,7 @@ var highChartsConf = {
                 enabled: true
             },
             title: {
-                text: 'Tendencia de consumo total'
+                text: 'Consumo total'
             },
             tooltip: {
                 valueDecimals: 4
@@ -159,6 +161,36 @@ var highChartsConf = {
             yAxis: {
                 title: {
                     text: 'Counsumo (vatios)'
+                }
+            }
+        }
+    },
+    'highchart-day__last': function(highchart){
+        return {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Consumo último día'
+            },
+            yAxis: {
+                title: {
+                    text: 'Corriente (A)'
+                }
+            }
+        }
+    },
+    'highchart-week__last__line': function(highchart){
+        return {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Consumo última semana'
+            },
+            yAxis: {
+                title: {
+                    text: 'Corriente (A)'
                 }
             }
         }
@@ -198,8 +230,9 @@ var highChartsConf = {
             },
             colorAxis: {
                 stops: [
-                    [0, '#fffbbc'],
-                    [0.9, '#c4463a']
+                    [0, '#aaeeff'],
+                    [0.5, '#fffbbc'],
+                    [1, '#c4463a']
                 ],
                 min: 0
             },
@@ -208,9 +241,24 @@ var highChartsConf = {
                 colsize: 24 * 36e5,
                 tooltip: {
                     headerFormat: 'Consumo<br/>',
-                    pointFormat: '{point.x:%e %b, %Y} {point.y}:00: <b>{point.value} Vatios</b>'
+                    pointFormat: '{point.y}:00: <b>{point.value} Vatios</b>'
                 }
             }]
+        }
+    },
+    'highchart-month__last__line': function(highchart){
+        return {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Consumo último mes'
+            },
+            yAxis: {
+                title: {
+                    text: 'Corriente (A)'
+                }
+            }
         }
     },
     'highchart-month__last': function(highchart){
@@ -245,8 +293,9 @@ var highChartsConf = {
             },
             colorAxis: {
                 stops: [
-                    [0, '#fffbbc'],
-                    [0.9, '#c4463a']
+                    [0, '#aaeeff'],
+                    [0.5, '#fffbbc'],
+                    [1, '#c4463a']
                 ],
                 min: 0
             },
@@ -311,8 +360,64 @@ var highChartsConf = {
                 }
             }
         }
+    },
+
+    'highchart-filter__total': function(highchart){
+        return {
+            chart: {
+                animation: Highcharts.svg,
+                marginRight: 10,
+                events: {
+                    redraw: function(){
+                        $.showDataDetailTotalLive(highchartLiveTotalData, '#live__total__data-detail');
+                    },
+                    load: function () {
+                        var series = this.series;
+                        $.showDataDetailTotalLive(highchartLiveTotalData, '#live__total__data-detail');
+                        $.initControlDetailTotalLive(series[0]);
+                    }
+                }
+            },
+            exporting: {
+                enabled: false
+            },
+            legend: {
+                enabled: true
+            },
+            title: {
+                text: 'Consumo total'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Counsumo (vatios)'
+                }
+            }
+        }
+    },
+    'highchart-consumo-economico': function(highchart){
+        return {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Consumo económico'
+            },
+            yAxis: {
+                title: {
+                    text: 'Pesos ($)'
+                }
+            }
+        }
     }
 };
+var highchartLiveTotalData = null;
+var highchartLiveTotalDataType = 'corriente';
+
+
+
 
 $(document).on('ready', function(){
     $('#filter__date').on('click', function(){
@@ -349,6 +454,66 @@ $.showDataDetail = function(series, container){
     });
 };
 
+$.showDataDetailTotalLive = function(series, container){
+    container = $(container);
+
+    $.each(series, function(index, serie){
+        var last = serie.data[serie.data.length - 1].y;
+
+        var contentId = container.attr('id')+'-serie_'+index;
+        var itemsSelect = [
+            {id:'corriente',name:'Corriente (A)'},
+            {id:'energia',name:'Energia (Kw/h)'},
+            {id:'precio',name:'Precio ($)'}];
+
+        if(!$('#'+contentId).length){
+            var newContent = $('<div>',{class:'text-right'}).attr('id', contentId);
+
+            $.each(itemsSelect, function(key, value){
+                if(key != 0)
+                    newContent.append($('<hr>'));
+
+                var newItem = $('<a>', {class:('total-live__item-select '+((highchartLiveTotalDataType==value.id)?'active':''))}).attr({
+                    'data-select': value.id
+                })
+                    .append($('<h5>').html(value.name))
+                    .append($('<h1>', {text: '0'}));
+                newContent.append(newItem);
+            });
+
+            container.append(newContent);
+        }
+
+        $('#'+contentId).find('[data-select="corriente"] h1').text(last.toFixed(2));
+        $('#'+contentId).find('[data-select="energia"] h1').text($.calcCorrienteToEnergia(last).toFixed(2));
+        $('#'+contentId).find('[data-select="precio"] h1').text($.calcCorrienteToPrecio(last).toFixed(2));
+    });
+};
+$.reDrawDataDetailTotalLive = function(serie){
+    for(var i = 0; i < highchartLiveTotalData.length; i++){
+        var newSerie = [];
+        for(var j = 0; j < highchartLiveTotalData[i].data.length; j++){
+            newSerie.push($.formatPointValue(highchartLiveTotalData[i].data[j]));
+        }
+        serie.setData(newSerie);
+    }
+};
+$.formatPointValue = function(point){
+    return {
+        x: point.x,
+        y: $.pointToDataTypeSelect(point.y)
+    };
+};
+
+$.initControlDetailTotalLive = function(serie){
+    $(document).on('click', '.total-live__item-select', function(){
+        highchartLiveTotalDataType = $(this).attr('data-select');
+        $('.total-live__item-select').removeClass('active');
+        $(this).addClass('active');
+        $.reDrawDataDetailTotalLive(serie);
+    });
+};
+
 $.filterDataDate = function(){
     var dateFrom = $('#filter__date__from').val(),
         dateTo = $('#filter__date__to').val();
@@ -357,12 +522,12 @@ $.filterDataDate = function(){
 
     if(dateFrom != '' || dateTo != ''){
         if(dateFrom != ''){
-            dateFrom = moment(dateFrom, 'MM/DD/YYYY', true);
+            dateFrom = moment(dateFrom, 'MM/DD/YYYY H:mm', true);
             if(dateFrom.isValid())
                 query = '?from='+(dateFrom.valueOf() / 1000);
         }
         if(dateTo != ''){
-            dateTo = moment(dateTo, 'MM/DD/YYYY', true);
+            dateTo = moment(dateTo, 'MM/DD/YYYY H:mm', true);
             if(dateTo.isValid()){
                 query += (query == '')?'?':'&';
                 query += 'to='+(dateTo.valueOf() / 1000);
@@ -373,4 +538,23 @@ $.filterDataDate = function(){
     var link = $('#filter__date__url');
     link.attr('href', link.attr('href')+query);
     link[0].click();
+};
+
+$.calcCorrienteToEnergia = function(corriente){
+    var energia = (corriente * dispositivoVoltaje) / 1000;
+    return energia;
+};
+$.calcEnergiaToPrecio = function(energia){
+    var precio = energia * dispositivoValorKw;
+    return precio;
+};
+$.calcCorrienteToPrecio = function(corriente){
+    return $.calcEnergiaToPrecio($.calcCorrienteToEnergia(corriente));
+};
+$.pointToDataTypeSelect = function(value){
+    if(highchartLiveTotalDataType == 'energia')
+        return $.calcCorrienteToEnergia(value);
+    if(highchartLiveTotalDataType == 'precio')
+        return $.calcCorrienteToPrecio(value);
+    return value;
 };

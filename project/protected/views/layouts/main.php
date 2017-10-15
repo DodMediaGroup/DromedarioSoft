@@ -22,6 +22,7 @@
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/pace/pace.css" rel="stylesheet" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/sortable/sortable-theme-bootstrap.css" rel="stylesheet" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/jquery-icheck/skins/all.css" rel="stylesheet" />
     <!-- Code Highlighter for Demo -->
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/prettify/github.css" rel="stylesheet" />
@@ -108,7 +109,9 @@
 		var resizefunc = [];
 	</script>
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/angularjs/angular.min.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/jquery/jquery-1.11.1.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
@@ -130,6 +133,7 @@
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/magnific-popup/jquery.magnific-popup.min.js"></script> 
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/pace/pace.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/jquery-icheck/icheck.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/doT/doT.min.js"></script>
 
@@ -146,6 +150,9 @@
 
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/raphael/raphael-min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/morrischart/morris.min.js"></script>
+
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/ckeditor/ckeditor.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/ckeditor/adapters/jquery.js"></script>
 
 	<!-- Demo Specific JS Libraries -->
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/prettify/prettify.js"></script>

@@ -23,9 +23,9 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label>Identificación Cliente *</label>
-								<?php echo $form->hiddenField($model, 'usuario', array('required'=>true)); ?>
-								<input type="text" class="input__autocomplete form-control" required data-autocomplete__data="<?php echo $this->createUrl('clientes/autocomplete__json'); ?>" data-autocomplete__input="#Dispositivos_usuario">
+								<label>Estación *</label>
+								<?php echo $form->hiddenField($model, 'site', array('required'=>true)); ?>
+								<input type="text" placeholder="Razón Social/Nit Cliente" class="input__autocomplete form-control" required data-autocomplete__data="<?php echo $this->createUrl('estaciones/autocomplete__json'); ?>" data-autocomplete__input="#Dispositivos_site">
 						  	</div>
 						</div>
 						<div class="col-sm-6">
@@ -35,6 +35,20 @@
 						  	</div>
 						</div>
 					</div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Fecha de Instalación</label>
+                                <?php echo $form->textField($model,'fecha_instalacion',array(
+                                    'maxlength'=>155,
+                                    'class'=>'form-control datetimepicker-input',
+                                    'required'=>true,
+                                    'readonly'=>true,
+                                    'data-date-format'=>"yyyy-mm-dd hh:ii:00"
+                                )); ?>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 			</div>
 		</div>
